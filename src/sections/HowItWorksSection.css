@@ -1,0 +1,221 @@
+.process {
+  --process-steps: 4;
+  background: var(--abyss);
+}
+
+.process--pinned {
+  height: calc(var(--process-steps) * 100svh);
+}
+
+.process__pin {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: calc(var(--nav-height) + var(--safe-top, 0px) + 1rem) 0 1.5rem;
+}
+
+.process--pinned .process__pin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.process__head,
+.process__stage,
+.process__bar {
+  width: min(var(--container-width), calc(100% - (var(--page-pad) * 2)));
+  margin-inline: auto;
+}
+
+.process__head {
+  flex: 0 0 auto;
+}
+
+.process__head .section-heading {
+  margin-top: 8px;
+  max-width: 14ch;
+}
+
+.process__stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: var(--space-7);
+  align-items: stretch;
+}
+
+.process__visual {
+  position: relative;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--abyss);
+  border: 1px solid var(--border-subtle);
+}
+
+.process__copies {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+}
+
+.process--pinned .process__copy {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 34rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s var(--ease-out);
+}
+
+.process--pinned .process__copy.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.process__num {
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 0.85;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.process__copy .meta {
+  margin-bottom: 8px;
+}
+
+.process__copy .card-heading {
+  margin-bottom: 12px;
+}
+
+.process__copy .body {
+  max-width: 32rem;
+}
+
+.process__bar {
+  flex: 0 0 auto;
+}
+
+.process__ticks {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 12px;
+}
+
+.process__ticks span {
+  font-size: var(--fs-meta);
+  letter-spacing: var(--track-meta);
+  color: var(--text-muted);
+  transition: color 0.35s var(--ease-out);
+}
+
+.process__ticks span.is-active {
+  color: var(--text-primary);
+}
+
+.process__track {
+  height: 1px;
+  background: var(--border-subtle);
+  overflow: hidden;
+}
+
+.process__track span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--highlight);
+  transform-origin: left center;
+  transition: transform 0.35s var(--ease-out);
+}
+
+.process--static {
+  padding: var(--section-padding) 0;
+}
+
+.process--static .process__pin {
+  height: auto;
+  display: block;
+  padding: 0;
+}
+
+.process--static .process__head {
+  margin-bottom: var(--space-8);
+}
+
+.process--static .process__stage {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.process--static .process__visual {
+  height: min(56vh, 560px);
+  min-height: 320px;
+}
+
+.process--static .process__copies {
+  display: grid;
+  gap: var(--space-7);
+  align-content: start;
+}
+
+.process--static .process__copy {
+  position: relative;
+  opacity: 1;
+}
+
+@media (max-width: 1023px) {
+  .process--pinned .process__head .section-heading {
+    font-size: clamp(1.45rem, 6.2vw, 2.1rem);
+    max-width: none;
+  }
+
+  .process__stage,
+  .process--static .process__stage {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .process--pinned .process__stage {
+    grid-template-rows: minmax(0, 1.15fr) auto;
+  }
+
+  .process--pinned .process__copies {
+    min-height: 180px;
+  }
+
+  .process--pinned .process__num {
+    font-size: clamp(1.8rem, 9vw, 2.8rem);
+    margin-bottom: 8px;
+  }
+
+  .process--pinned .process__copy .body {
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .process--static .process__visual {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process__copy,
+  .process__track span {
+    transition: none;
+  }
+}

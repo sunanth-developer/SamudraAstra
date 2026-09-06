@@ -1,0 +1,11 @@
+.process-globe {
+  position: absolute;
+  inset: 0;
+  background: var(--abyss);
+}
+
+.process-globe canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,40 @@
+.image-reveal {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-elevated);
+  clip-path: inset(100% 0 0 0);
+}
+
+.image-reveal.is-revealed {
+  clip-path: inset(0);
+}
+
+.image-reveal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.image-reveal--hover img {
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.image-reveal--hover:hover img {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-reveal--hover img,
+  .image-reveal--hover:hover img {
+    transform: none;
+    transition: none;
+  }
+
+  .image-reveal {
+    clip-path: none;
+  }
+}

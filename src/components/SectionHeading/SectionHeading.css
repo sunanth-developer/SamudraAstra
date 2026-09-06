@@ -1,0 +1,9 @@
+.section-head {
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: var(--space-7);
+}
+
+.section-head .eyebrow {
+  margin-bottom: 0;
+}

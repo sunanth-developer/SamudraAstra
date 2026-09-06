@@ -1,0 +1,8 @@
+.page-transition {
+  background: var(--bg-primary);
+  min-height: 100svh;
+  overflow: visible;
+  transform: none;
+  filter: none;
+  perspective: none;
+}

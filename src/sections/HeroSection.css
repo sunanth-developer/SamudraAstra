@@ -1,0 +1,147 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  height: 100svh;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--abyss);
+  display: grid;
+  align-items: end;
+}
+
+.hero__media,
+.hero__media-inner {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__media-inner {
+  will-change: transform;
+  z-index: 0;
+}
+
+.hero__video,
+.hero__still {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  object-fit: cover;
+  transition: opacity 0.8s var(--ease-out);
+}
+
+.hero__video.is-ready {
+  opacity: 1;
+}
+
+.hero__still {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: opacity 0.8s var(--ease-out);
+}
+
+.hero__video.is-ready + .hero__still {
+  opacity: 0;
+}
+
+.hero__wash {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(180deg, rgba(20, 24, 46, 0.42) 0%, rgba(31, 40, 83, 0.18) 38%, rgba(20, 24, 46, 0.82) 100%);
+  pointer-events: none;
+}
+
+.hero__sonar {
+  position: absolute;
+  right: 4%;
+  bottom: 18%;
+  width: min(280px, 32vw);
+  height: min(280px, 32vw);
+  z-index: 2;
+  opacity: 0.72;
+  pointer-events: none;
+  mask-image: radial-gradient(circle, black 55%, transparent 80%);
+}
+
+.hero__copy {
+  position: relative;
+  z-index: 3;
+  padding-bottom: clamp(3rem, 8vh, 6rem);
+}
+
+.hero-heading {
+  display: flex;
+  flex-direction: column;
+  margin: 18px 0 22px;
+}
+
+.hero__copy .body {
+  max-width: 40rem;
+  color: var(--mist);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.hero__status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: 32px;
+  font-size: var(--fs-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--mist);
+}
+
+.hero__dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 0 5px rgba(254, 78, 70, 0.16);
+  vertical-align: middle;
+}
+
+@media (max-width: 1023px) {
+  .hero__sonar {
+    opacity: 0.28;
+    right: -8%;
+    bottom: 28%;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    align-items: end;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero__sonar {
+    display: none;
+  }
+}

@@ -1,0 +1,199 @@
+.systems-sec {
+  padding: var(--section-padding) 0;
+  background:
+    linear-gradient(180deg, var(--abyss) 0%, var(--ocean-blue) 55%, var(--abyss) 100%);
+}
+
+.systems-sec .section-heading {
+  margin: 12px 0 18px;
+  max-width: 14ch;
+}
+
+.systems-sec__lead {
+  margin-bottom: var(--space-8);
+}
+
+.systems-sec__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.systems-sec__row {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr) auto;
+  grid-template-areas:
+    'id name arrow'
+    'id copy arrow';
+  gap: 6px 20px;
+  padding: 28px 8px;
+  border-top: 1px solid var(--border-subtle);
+  transition:
+    padding 0.7s var(--ease-out),
+    background 0.7s var(--ease-out);
+}
+
+.systems-sec__row:last-child {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.systems-sec__id {
+  grid-area: id;
+  font-size: var(--fs-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-top: 8px;
+  transition: color 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.systems-sec__name {
+  grid-area: name;
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.systems-sec__copy {
+  grid-area: copy;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  max-width: 46ch;
+}
+
+.systems-sec__arrow {
+  grid-area: arrow;
+  align-self: center;
+  color: var(--text-muted);
+  transition: transform 0.6s var(--ease-out), color 0.6s var(--ease-out);
+}
+
+.systems-sec__row:hover,
+.systems-sec__row.is-active {
+  background: var(--bg-hover);
+  padding: 34px 16px;
+}
+
+.systems-sec__row:hover .systems-sec__id,
+.systems-sec__row.is-active .systems-sec__id {
+  color: var(--accent);
+  transform: translateX(6px);
+}
+
+.systems-sec__row:hover .systems-sec__arrow,
+.systems-sec__row.is-active .systems-sec__arrow {
+  transform: translateX(8px);
+  color: var(--text-primary);
+}
+
+.systems-sec__hud {
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+  border: 1px solid var(--submerged);
+  padding: 28px 24px;
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(254, 78, 70, 0.14), transparent 55%),
+    var(--abyss);
+}
+
+.systems-sec__hud h3 {
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin: 10px 0 22px;
+  line-height: 1.2;
+}
+
+.systems-sec__hud dl {
+  display: grid;
+  gap: 14px;
+}
+
+.systems-sec__hud dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.systems-sec__hud dt {
+  font-size: var(--fs-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.systems-sec__hud dd {
+  font-size: var(--fs-meta);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.systems-sec__live {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 0 5px rgba(254, 78, 70, 0.16);
+  vertical-align: middle;
+}
+
+.systems-sec__layers {
+  display: grid;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.systems-sec__layers li {
+  font-size: var(--fs-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-left: 14px;
+  border-left: 1px solid var(--submerged);
+  transition: color 0.45s var(--ease-out), border-color 0.45s var(--ease-out);
+}
+
+.systems-sec__layers li.is-active {
+  color: var(--secondary);
+  border-left-color: var(--signal);
+}
+
+@media (max-width: 1023px) {
+  .systems-sec__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .systems-sec__hud {
+    position: relative;
+    top: 0;
+    order: -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .systems-sec__row,
+  .systems-sec__row:hover,
+  .systems-sec__row.is-active {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'id arrow'
+      'name arrow'
+      'copy copy';
+    padding: 22px 0;
+  }
+
+  .systems-sec__name {
+    font-size: 1.2rem;
+  }
+
+  .systems-sec__copy {
+    max-width: none;
+    font-size: 0.88rem;
+  }
+}

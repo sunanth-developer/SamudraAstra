@@ -1,0 +1,117 @@
+.usv-visual {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--abyss);
+}
+
+.usv-visual__sea {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 60% 55%;
+  opacity: 0.42;
+  filter: saturate(0.85) brightness(0.7);
+}
+
+.usv-visual__wash {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(20, 24, 46, 0.18), rgba(20, 24, 46, 0.62)),
+    radial-gradient(ellipse at 50% 70%, rgba(254, 78, 70, 0.14), transparent 50%);
+  pointer-events: none;
+}
+
+.usv-model {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.usv-model canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+
+.usv-model canvas:active {
+  cursor: grabbing;
+}
+
+.usv-model__parts {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  display: grid;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.usv-model__parts li {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mist);
+  padding-left: 10px;
+  border-left: 1px solid var(--submerged);
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.usv-model__parts li.is-on {
+  color: var(--secondary);
+  border-left-color: var(--signal);
+}
+
+.usv-visual__hud {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  pointer-events: none;
+}
+
+.usv-visual__hud span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--off-white);
+}
+
+.usv-visual__hud em {
+  font-style: normal;
+  color: var(--mist);
+  font-size: 0.58rem;
+}
+
+.usv-visual__hud .is-signal {
+  color: var(--signal);
+}
+
+@media (max-width: 767px) {
+  .usv-visual__hud {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .usv-model__parts {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .usv-visual__sea {
+    filter: none;
+  }
+}

@@ -1,0 +1,24 @@
+.rt {
+  display: block;
+}
+
+.rt__line {
+  display: block;
+  overflow: hidden;
+}
+
+.rt__line-inner {
+  display: block;
+  will-change: transform, opacity, filter;
+}
+
+.rt__word-wrap {
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.rt__word,
+.rt__char {
+  display: inline-block;
+  will-change: transform, opacity;
+}

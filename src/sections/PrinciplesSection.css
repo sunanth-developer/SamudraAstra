@@ -1,0 +1,110 @@
+.principles {
+  padding: var(--section-padding) 0;
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(254, 78, 70, 0.14), transparent 42%),
+    var(--deep-ocean);
+}
+
+.principles .eyebrow {
+  margin-bottom: var(--space-4);
+}
+
+.principles .section-heading {
+  margin-bottom: var(--space-8);
+  max-width: 16ch;
+}
+
+.principles__list {
+  display: grid;
+  gap: 0;
+}
+
+.principle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: clamp(2.5rem, 10vw, 8rem);
+  padding: var(--space-7) 0;
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.principle__num {
+  position: absolute;
+  top: var(--space-5);
+  left: 0;
+  font-size: var(--fs-meta);
+  letter-spacing: var(--track-meta);
+  color: var(--text-muted);
+}
+
+.principle:last-child {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.principle h3 {
+  flex: 1 1 42%;
+  min-width: 0;
+  font-size: clamp(2.4rem, 6vw, 5.5rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  padding: 22px var(--space-5) 0 0;
+}
+
+.principle p {
+  flex: 0 1 36rem;
+  width: min(100%, 36rem);
+  max-width: 36rem;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.principles__notes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.principle-note {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 767px) {
+  .principle {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-6) 0;
+  }
+
+  .principle h3 {
+    flex: none;
+    width: 100%;
+    padding-right: 0;
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .principle p {
+    flex: none;
+    width: 100%;
+    max-width: none;
+    font-size: 0.95rem;
+  }
+
+  .principles__notes {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    margin-top: var(--space-6);
+  }
+
+  .principles .section-heading {
+    margin-bottom: var(--space-6);
+  }
+}
