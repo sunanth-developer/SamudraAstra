@@ -15,6 +15,7 @@ dist-ssr
 .chrome-nav-profile
 public/herovid.mp4
 .verify
+coming-soon/
 
 # Editor directories and files
 .vscode/*
