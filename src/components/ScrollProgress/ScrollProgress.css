@@ -1,0 +1,41 @@
+.scroll-progress {
+  position: fixed;
+  top: 50%;
+  right: clamp(12px, 2vw, 28px);
+  z-index: 90;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 10px;
+}
+
+.scroll-progress button {
+  display: grid;
+  justify-items: end;
+  color: var(--steel);
+  opacity: 0.45;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: color 0.35s var(--ease-out), opacity 0.35s var(--ease-out);
+}
+
+.scroll-progress em {
+  display: none;
+  font-style: normal;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+}
+
+.scroll-progress button.is-active,
+.scroll-progress button:hover,
+.scroll-progress button:focus-visible {
+  color: var(--signal-orange);
+  opacity: 1;
+}
+
+@media (max-width: 1023px) {
+  .scroll-progress {
+    display: none;
+  }
+}

@@ -25,7 +25,7 @@ export function MagneticButton({
   }
 
   const onLeave = () => {
-    gsap.to(ref.current, { x: 0, y: 0, duration: 0.55, ease: 'elastic.out(1, 0.45)' })
+    gsap.to(ref.current, { x: 0, y: 0, duration: 0.45, ease: 'power3.out' })
   }
 
   const inner = (

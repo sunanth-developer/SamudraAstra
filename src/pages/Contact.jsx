@@ -16,8 +16,8 @@ export function Contact() {
         description="Partner with Samudra Astra on engineering, technology and mission-focused development for the aquatic domain."
       />
       <header className="page__hero container">
-        <p className="eyebrow">Partnership</p>
-        <h1 className="display">Build the future of maritime defence.</h1>
+        <p className="eyebrow">Contact</p>
+        <h1 className="display">Get in touch.</h1>
         <p className="body">
           Samudra Astra works across engineering, technology and mission-focused
           development to advance capabilities for the aquatic domain.

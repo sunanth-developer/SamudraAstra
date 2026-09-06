@@ -1,8 +1,25 @@
 .intro {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
   padding: var(--section-padding) 0;
+  background: linear-gradient(180deg, rgba(5, 8, 18, 0.28) 0%, rgba(3, 8, 20, 0.72) 100%);
+}
+
+.intro__rays {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   background:
-    repeating-radial-gradient(circle at 88% 120%, transparent 0 46px, rgba(254, 78, 70, 0.07) 47px 48px),
-    var(--deep-ocean);
+    linear-gradient(180deg, rgba(220, 232, 242, 0.08), transparent 42%),
+    repeating-linear-gradient(
+      118deg,
+      transparent 0 42px,
+      rgba(220, 232, 242, 0.03) 43px 44px
+    );
+  mask-image: linear-gradient(180deg, black, transparent 78%);
+  animation: ray-shift 16s linear infinite;
 }
 
 .intro .eyebrow {
@@ -10,7 +27,7 @@
 }
 
 .intro__statement {
-  max-width: 16ch;
+  max-width: 12ch;
 }
 
 .intro__line {
@@ -20,32 +37,54 @@
 .intro__aside {
   margin-top: var(--space-6);
   max-width: 40rem;
+  color: var(--ice);
 }
 
-.intro__depth {
+.intro__words {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 0;
   margin-top: var(--space-8);
   padding-top: var(--space-6);
-  border-top: 1px solid var(--submerged);
+  border-top: 1px solid var(--border-subtle);
 }
 
-.intro__depth-item {
+.intro__word {
+  font-family: var(--font-mono);
   font-size: var(--fs-meta);
   letter-spacing: var(--track-meta);
   text-transform: uppercase;
-  color: var(--seafoam);
+  color: var(--ice);
 }
 
-.intro__depth-item:not(:last-child)::after {
-  content: '↓';
+.intro__word:not(:last-child)::after {
+  content: '→';
   margin: 0 22px;
-  color: var(--text-muted);
+  color: var(--signal-orange);
+}
+
+@keyframes ray-shift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-40px); }
 }
 
 @media (max-width: 767px) {
-  .intro__aside {
-    margin-top: var(--space-5);
+  .intro {
+    min-height: 0;
+    padding: var(--section-padding) 0;
+  }
+
+  .intro__statement {
+    max-width: none;
+  }
+
+  .intro__word:not(:last-child)::after {
+    margin: 0 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro__rays {
+    animation: none;
   }
 }

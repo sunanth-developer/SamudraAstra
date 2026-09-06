@@ -1,67 +1,59 @@
 import { Link } from 'react-router-dom'
 import { Logo } from '../Logo'
-import { navLinks, services } from '../../data/content'
+import { footerLinks, services } from '../../data/content'
 
 export function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer__wordmark">
-          <Logo large />
+        <div className="footer__top">
+          <Logo variant="white" />
+          <p className="footer__descriptor">
+            Built for the blue. Defined by precision.
+          </p>
         </div>
-        <p className="footer__descriptor meta">Aquatic defence technology</p>
 
         <div className="footer__grid">
-          <div>
+          <div className="footer__col">
             <p className="meta">Navigate</p>
             <ul>
-              {navLinks
+              {footerLinks
                 .filter((item) => item.href !== '/')
                 .map((item) => (
-                <li key={item.href}>
-                  <Link to={item.href} className="link-line">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+                  <li key={item.href}>
+                    <Link to={item.href}>{item.label}</Link>
+                  </li>
+                ))}
             </ul>
           </div>
 
-          <div>
+          <div className="footer__col">
             <p className="meta">Capabilities</p>
             <ul>
               {services.map((item) => (
                 <li key={item.id}>
-                  <Link to="/capabilities" className="link-line">
-                    {item.name}
-                  </Link>
+                  <Link to="/capabilities">{item.name}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
+          <div className="footer__col">
             <p className="meta">Company</p>
             <ul>
               <li>
-                <Link to="/about" className="link-line">
-                  About
-                </Link>
+                <Link to="/about">About</Link>
               </li>
               <li>
-                <Link to="/contact" className="link-line">
-                  Partner with us
-                </Link>
+                <Link to="/contact">Get in Touch</Link>
               </li>
               <li>
-                <Link to="/blogs" className="link-line">
-                  Blogs
-                </Link>
+                <Link to="/blogs">Blogs</Link>
               </li>
             </ul>
           </div>
 
-          <div>
+          <div className="footer__col">
             <p className="meta">Domain</p>
             <p className="footer__muted">
               Technology for the maritime domain. Sensing, autonomy and

@@ -25,12 +25,12 @@ export function InsightsSection() {
   if (!featured) return null
 
   return (
-    <section className="insights" id="insights">
+    <section className="insights theme-light" id="insights">
       <div className="container">
         <div className="insights__head">
           <div>
-            <p className="eyebrow">From the depths</p>
-            <h2 className="section-heading">Know the domain.</h2>
+            <p className="eyebrow">Insights</p>
+            <h2 className="section-heading">Notes from the domain.</h2>
           </div>
           <Link to="/blogs" className="link-line">
             All notes <ArrowUpRight size={14} />

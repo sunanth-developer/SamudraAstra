@@ -7,14 +7,41 @@ export const brand = {
 }
 
 export const navLinks = [
-  { label: 'Home', href: '/' },
+  { label: 'Technology', href: '/technology' },
+  { label: 'Systems', href: '/systems' },
   { label: 'About', href: '/about' },
+  { label: 'Blogs', href: '/blogs' },
+]
+
+export const navCta = { label: 'Contact', href: '/contact' }
+
+export const footerLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Technology', href: '/technology' },
   { label: 'Capabilities', href: '/capabilities' },
   { label: 'Systems', href: '/systems' },
-  { label: 'Technology', href: '/technology' },
+  { label: 'About', href: '/about' },
   { label: 'Blogs', href: '/blogs' },
   { label: 'Contact', href: '/contact' },
 ]
+
+export const journeyMarks = [
+  { id: '01', href: '#landing', label: 'Landing' },
+  { id: '02', href: '#mission', label: 'Mission' },
+  { id: '03', href: '#technology', label: 'Technology' },
+  { id: '04', href: '#vessel', label: 'Vessel' },
+  { id: '05', href: '#systems', label: 'Systems' },
+  { id: '06', href: '#about', label: 'About' },
+  { id: '07', href: '#contact', label: 'Contact' },
+]
+
+export const serviceLabels = {
+  '01': 'Sensing',
+  '02': 'Autonomy',
+  '03': 'Sensors',
+  '04': 'Intelligence',
+  '05': 'Mission control',
+}
 
 export const services = [
   {

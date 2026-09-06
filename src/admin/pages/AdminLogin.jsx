@@ -46,7 +46,7 @@ export function AdminLogin() {
         <span className="cms-login__grid" />
       </div>
       <form className="cms-login__panel" onSubmit={onSubmit}>
-        <Logo />
+        <Logo variant="white" />
         <p className="cms-kicker">Administration</p>
         <p className="cms-login__lead">Manage Samudra Astra content and insights.</p>
 

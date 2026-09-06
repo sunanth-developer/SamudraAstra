@@ -43,12 +43,21 @@ export function CTASection() {
           scrollTrigger: { trigger: root, start: 'top 70%', once: true },
         }
       )
+      gsap.fromTo(
+        '.cta__wake',
+        { xPercent: -12 },
+        {
+          xPercent: 8,
+          ease: 'none',
+          scrollTrigger: { trigger: root, start: 'top 80%', end: 'bottom top', scrub: true },
+        }
+      )
     }, root)
     return () => ctx.revert()
   }, [])
 
   return (
-    <section className="cta" ref={rootRef}>
+    <section className="cta" id="contact" ref={rootRef}>
       <video
         ref={videoRef}
         className="cta__video"
@@ -64,21 +73,22 @@ export function CTASection() {
       </video>
       <img src={media.ctaStill} alt="" className="cta__fallback" />
       <div className="cta__overlay" />
+      <div className="cta__wake" aria-hidden="true" />
       <div className="container cta__inner">
-        <p className="eyebrow">Begin</p>
+        <p className="eyebrow">The future</p>
         <h2 className="display">
-          <span className="cta__line">The surface is only</span>
-          <span className="cta__line">the beginning.</span>
+          <span className="cta__line">The next frontier</span>
+          <span className="cta__line">is ours to build.</span>
         </h2>
         <p className="body cta__support">
           Explore what Samudra Astra is building for the maritime domain.
         </p>
         <div className="cta__actions">
           <MagneticButton to="/technology" variant="solid" cursor="EXPLORE">
-            Explore our technology
+            Explore the Technology
           </MagneticButton>
           <MagneticButton to="/contact" cursor="OPEN">
-            Partner with us
+            Get in Touch
           </MagneticButton>
         </div>
       </div>

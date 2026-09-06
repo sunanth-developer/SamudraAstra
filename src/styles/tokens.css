@@ -1,41 +1,52 @@
 :root {
-  --primary: #1f2853;
-  --primary-deep: #14182e;
-  --primary-mid: #2b3466;
-  --secondary: #ffffff;
-  --highlight: #fe4e46;
-  --highlight-strong: #e03a32;
+  --samudra-blue: #0d1a63;
+  --signal-orange: #f68048;
+  --pure-white: #ffffff;
+  --rich-black: #050505;
+  --mist: #f2f5f8;
+  --ice: #dce8f2;
+  --steel: #63758a;
+  --ocean-teal: #246b70;
 
-  --abyss: var(--primary-deep);
-  --deep-ocean: var(--primary);
-  --ocean-blue: var(--primary-mid);
-  --marine-teal: var(--highlight);
-  --seafoam: #d8dbe8;
-  --signal: var(--highlight);
+  --primary: var(--samudra-blue);
+  --primary-deep: #08113f;
+  --highlight: var(--signal-orange);
+  --highlight-strong: #e06a38;
+  --secondary: var(--pure-white);
+
+  --abyss: var(--rich-black);
+  --deep-ocean: #070b1c;
+  --ocean-blue: var(--samudra-blue);
+  --marine-teal: var(--ocean-teal);
+  --seafoam: var(--ice);
+  --signal: var(--signal-orange);
   --signal-strong: var(--highlight-strong);
-  --off-white: var(--secondary);
-  --mist: #c4c7d6;
-  --submerged: #2d3558;
+  --off-white: var(--pure-white);
+  --submerged: rgba(13, 26, 99, 0.18);
 
-  --bg-primary: var(--primary-deep);
-  --bg-secondary: var(--primary);
-  --bg-elevated: var(--primary-mid);
-  --bg-hover: rgba(254, 78, 70, 0.08);
-  --text-primary: var(--secondary);
-  --text-secondary: var(--mist);
-  --text-muted: #8b90a8;
+  --bg-primary: var(--rich-black);
+  --bg-secondary: var(--deep-ocean);
+  --bg-elevated: #0c1433;
+  --bg-light: var(--mist);
+  --bg-hover: rgba(246, 128, 72, 0.08);
+  --text-primary: var(--pure-white);
+  --text-secondary: #c5cdd8;
+  --text-muted: var(--steel);
+  --text-ink: #12151c;
   --border-subtle: rgba(255, 255, 255, 0.1);
   --border-strong: rgba(255, 255, 255, 0.22);
-  --accent: var(--highlight);
-  --accent-strong: var(--secondary);
-  --overlay: rgba(20, 24, 46, 0.68);
+  --accent: var(--signal-orange);
+  --accent-strong: var(--pure-white);
+  --overlay: rgba(5, 5, 5, 0.62);
 
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
   --font: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   --container-width: 1440px;
   --page-pad: clamp(20px, 4vw, 64px);
   --section-padding: clamp(5.5rem, 10vw, 9rem);
-  --nav-height: 72px;
+  --nav-height: 80px;
   --safe-top: env(safe-area-inset-top, 0px);
   --grid-gap: 24px;
 
@@ -60,30 +71,30 @@
   --space-10: 128px;
 
   --fs-meta: 0.6875rem;
-  --fs-nav: 0.8125rem;
-  --fs-body: 1rem;
-  --fs-card: clamp(1.25rem, 2vw, 1.75rem);
-  --fs-section: clamp(2.15rem, 4.8vw, 4rem);
-  --fs-hero: clamp(2.8rem, 7.6vw, 6.4rem);
-  --fs-display: clamp(2.5rem, 6.4vw, 5.8rem);
+  --fs-nav: 0.78rem;
+  --fs-body: 1.05rem;
+  --fs-card: clamp(1.35rem, 2vw, 1.85rem);
+  --fs-section: clamp(2.4rem, 5.4vw, 4.6rem);
+  --fs-hero: clamp(3.2rem, 8.6vw, 7.4rem);
+  --fs-display: clamp(2.6rem, 6.8vw, 5.6rem);
 
-  --lh-tight: 0.94;
+  --lh-tight: 0.92;
   --lh-body: 1.65;
-  --track-tight: -0.04em;
-  --track-meta: 0.18em;
+  --track-tight: -0.045em;
+  --track-meta: 0.2em;
 }
 
 @media (max-width: 767px) {
   :root {
     --nav-height: 64px;
-    --section-padding: 4rem;
+    --section-padding: 4.2rem;
     --page-pad: 20px;
     --space-8: 48px;
     --space-9: 64px;
-    --fs-body: 0.95rem;
-    --fs-card: 1.2rem;
-    --fs-section: clamp(1.85rem, 8.4vw, 2.45rem);
-    --fs-display: clamp(2.05rem, 10vw, 2.9rem);
-    --fs-hero: clamp(2.25rem, 11vw, 3.15rem);
+    --fs-body: 0.98rem;
+    --fs-card: 1.25rem;
+    --fs-section: clamp(2rem, 9vw, 2.7rem);
+    --fs-display: clamp(2.1rem, 11vw, 3rem);
+    --fs-hero: clamp(2.5rem, 13vw, 3.4rem);
   }
 }

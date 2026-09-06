@@ -3,6 +3,9 @@ function asset(path) {
 }
 
 export const media = {
+  logoWhite: asset('images/logowhite.png'),
+  logoBlack: asset('images/logoblack.png'),
+  vesselModel: asset('images/3daily-model.glb'),
   heroPoster: asset('images/hero-ocean.jpg'),
   heroVideo: asset('herovid.mp4'),
   ocean: asset('images/hero-ocean.jpg'),

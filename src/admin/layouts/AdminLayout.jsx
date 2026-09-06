@@ -81,7 +81,7 @@ export function AdminLayout() {
 
       <aside className={`cms-side ${open ? 'is-open' : ''}`}>
         <div className="cms-side__head">
-          <Logo />
+          <Logo variant="white" />
           <button
             className="cms-icon-btn cms-side__close"
             type="button"

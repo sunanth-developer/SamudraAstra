@@ -1,0 +1,44 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.logo img {
+  display: block;
+  width: auto;
+  height: 52px;
+  object-fit: contain;
+}
+
+.logo--large img {
+  height: clamp(88px, 14vw, 160px);
+}
+
+.nav .logo img {
+  height: 48px;
+}
+
+.nav.is-scrolled .logo img {
+  height: 42px;
+}
+
+.loader .logo img {
+  height: 110px;
+}
+
+.cms-side__head .logo img,
+.cms-login .logo img {
+  height: 56px;
+}
+
+@media (max-width: 767px) {
+  .nav .logo img,
+  .nav.is-scrolled .logo img {
+    height: 46px;
+  }
+
+  .loader .logo img {
+    height: 88px;
+  }
+}

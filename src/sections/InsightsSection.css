@@ -1,6 +1,19 @@
 .insights {
+  position: relative;
+  z-index: 2;
   padding: var(--section-padding) 0;
-  background: var(--deep-ocean);
+  background: var(--mist);
+  color: var(--text-ink);
+}
+
+.insights .section-heading {
+  color: var(--samudra-blue);
+}
+
+.insights .card-heading,
+.insights h3,
+.insights .link-line {
+  color: var(--samudra-blue);
 }
 
 .insights__head {
@@ -44,7 +57,7 @@
   align-items: center;
   gap: 18px;
   padding-bottom: 22px;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid rgba(13, 26, 99, 0.12);
 }
 
 .insight--sm .insight__media {
@@ -72,7 +85,7 @@
 
 .insight:hover .insight__arrow {
   transform: translate(4px, -4px);
-  color: var(--text-primary);
+  color: var(--signal-orange);
 }
 
 .insights__stack {

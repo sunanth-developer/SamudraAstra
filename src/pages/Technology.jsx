@@ -10,8 +10,8 @@ export function Technology() {
         description="How Samudra Astra thinks about sensing, detection, understanding and response in the maritime domain."
       />
       <header className="page__hero container">
-        <p className="eyebrow">04 / Technology</p>
-        <h1 className="display">Intelligence in every layer.</h1>
+        <p className="eyebrow">Technology</p>
+        <h1 className="display">Engineered for real-world missions.</h1>
         <p className="body">
           A four-stage information architecture: sense, detect, understand,
           respond. This is a design narrative — not a performance specification.

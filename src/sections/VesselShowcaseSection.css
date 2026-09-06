@@ -1,0 +1,155 @@
+.vessel-show {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+.vessel-show--pinned {
+  height: 400svh;
+}
+
+.vessel-show__pin {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-content: space-between;
+  padding: calc(var(--nav-height) + 32px) 0 40px;
+}
+
+.vessel-show--pinned .vessel-show__pin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.vessel-show__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.vessel-show__top,
+.vessel-show__views,
+.vessel-show__hotspots,
+.vessel-show__telemetry {
+  position: relative;
+  z-index: 1;
+}
+
+.vessel-show .display {
+  max-width: 10ch;
+  margin-top: 12px;
+}
+
+.vessel-show__views {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 32px;
+  width: min(var(--container-width), calc(100% - (var(--page-pad) * 2)));
+  margin-inline: auto;
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--steel);
+}
+
+.vessel-show__views li {
+  display: grid;
+  gap: 4px;
+  opacity: 0.45;
+  transition: opacity 0.4s var(--ease-out), color 0.4s var(--ease-out);
+}
+
+.vessel-show__views li.is-active {
+  opacity: 1;
+  color: var(--signal-orange);
+}
+
+.vessel-show__hotspots {
+  position: absolute;
+  inset: 18% 8% 22%;
+  pointer-events: none;
+}
+
+.vessel-show__hotspots li {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ice);
+}
+
+.vessel-show__hotspots i,
+.vessel-show__telemetry i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--signal-orange);
+  box-shadow: 0 0 0 5px rgba(246, 128, 72, 0.16);
+}
+
+.vessel-show__telemetry {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  width: min(var(--container-width), calc(100% - (var(--page-pad) * 2)));
+  margin-inline: auto;
+}
+
+.vessel-show__telemetry div {
+  min-width: 120px;
+}
+
+.vessel-show__telemetry dt,
+.vessel-show__telemetry dd {
+  font-family: var(--font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.vessel-show__telemetry dt {
+  font-size: 0.62rem;
+  color: var(--steel);
+  margin-bottom: 6px;
+}
+
+.vessel-show__telemetry dd {
+  font-size: 0.72rem;
+  color: var(--pure-white);
+}
+
+@media (max-width: 1023px) {
+  .vessel-show--pinned {
+    height: 400svh;
+  }
+
+  .vessel-show__pin {
+    padding:
+      calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 20px)
+      0
+      calc(28px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .vessel-show .display {
+    max-width: 10ch;
+  }
+
+  .vessel-show__views {
+    gap: 16px 24px;
+  }
+
+  .vessel-show__hotspots {
+    inset: 22% 4% 26%;
+  }
+
+  .vessel-show__telemetry {
+    gap: 20px 24px;
+  }
+}

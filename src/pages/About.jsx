@@ -12,7 +12,7 @@ export function About() {
       />
       <header className="page__hero container">
         <p className="eyebrow">Company</p>
-        <h1 className="display">Building the next generation of aquatic defence technology.</h1>
+        <h1 className="display">Building the future of maritime systems.</h1>
         <p className="body">
           Samudra Astra is an emerging defence technology company focused on the
           aquatic domain. We combine engineering, autonomous systems, sensing

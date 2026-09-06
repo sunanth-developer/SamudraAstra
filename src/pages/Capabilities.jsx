@@ -13,7 +13,7 @@ export function Capabilities() {
         description="Samudra Astra capability areas: underwater surveillance, autonomous systems, sonar and sensing, maritime intelligence, and mission systems."
       />
       <header className="page__hero container">
-        <p className="eyebrow">02 / Capabilities</p>
+        <p className="eyebrow">Capabilities</p>
         <h1 className="display">See further. Understand faster.</h1>
         <p className="body">
           Technology areas under development for the maritime domain. These are

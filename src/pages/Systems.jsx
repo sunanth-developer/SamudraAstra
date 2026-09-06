@@ -13,8 +13,8 @@ export function Systems() {
         description="System development areas at Samudra Astra: autonomous underwater systems, sensors, maritime surveillance, and mission control."
       />
       <header className="page__hero container">
-        <p className="eyebrow">03 / Systems</p>
-        <h1 className="display">Engineered for the maritime domain.</h1>
+        <p className="eyebrow">Systems</p>
+        <h1 className="display">Precision on the water.</h1>
         <p className="body">
           System development areas. Until a platform is formally announced, we
           describe capability — not deployed products, contracts, or
