@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 export function Seo({
   title,
   description,
-  image = '/images/hero-ocean.jpg',
+  image = `${import.meta.env.BASE_URL}images/hero-ocean.jpg`,
 }) {
   useEffect(() => {
     const fullTitle = title.includes('Samudra Astra')
