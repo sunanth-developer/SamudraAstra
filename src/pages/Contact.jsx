@@ -1,65 +1,121 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Seo } from '../components/Seo'
+import { brand, enquirySubjects } from '../data/content'
+import { submitEnquiry } from '../services/enquiryService'
+
+const empty = {
+  name: '',
+  organisation: '',
+  email: '',
+  phone: '',
+  subject: 'General',
+  message: '',
+}
 
 export function Contact() {
-  const [sent, setSent] = useState(false)
+  const [params] = useSearchParams()
+  const initialSubject = enquirySubjects.includes(params.get('subject'))
+    ? params.get('subject')
+    : 'General'
+  const [form, setForm] = useState({ ...empty, subject: initialSubject })
+  const [status, setStatus] = useState('idle')
+  const [error, setError] = useState('')
+
+  const showPhone = useMemo(() => Boolean(brand.phone), [])
+  const showLocation = useMemo(() => Boolean(brand.location), [])
+
+  const onChange = (e) => {
+    setForm((current) => ({ ...current, [e.target.name]: e.target.value }))
+  }
 
   const onSubmit = (e) => {
     e.preventDefault()
-    setSent(true)
+    setError('')
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      setError('Enter a valid email address.')
+      return
+    }
+    if (form.phone && !/^[+\d][\d\s()-]{7,}$/.test(form.phone)) {
+      setError('Enter a valid phone number.')
+      return
+    }
+    submitEnquiry({ type: 'contact', ...form })
+    setStatus('sent')
   }
 
   return (
     <article className="page">
       <Seo
-        title="Contact"
-        description="Partner with Samudra Astra on engineering, technology and mission-focused development for the aquatic domain."
+        title="Contact Samudra Astra Defence Systems"
+        description="Start a conversation with Samudra Astra Defence Systems."
       />
-      <header className="page__hero container">
+      <header className="container sads-page-hero" data-reveal>
         <p className="eyebrow">Contact</p>
-        <h1 className="display">Get in touch.</h1>
+        <h1 className="section-heading">Start a conversation.</h1>
         <p className="body">
-          Samudra Astra works across engineering, technology and mission-focused
-          development to advance capabilities for the aquatic domain.
+          {brand.name}
+          <br />
+          {brand.parent}
         </p>
       </header>
 
-      <div className="contact container">
-        <form className="contact__form" onSubmit={onSubmit}>
-          <label>
-            Name
-            <input name="name" type="text" required autoComplete="name" />
-          </label>
-          <label>
-            Organisation
-            <input name="org" type="text" required />
-          </label>
-          <label>
-            Email
-            <input name="email" type="email" required autoComplete="email" />
-          </label>
-          <label>
-            Notes
-            <textarea name="notes" rows="5" required />
-          </label>
-          <button className="btn btn--solid" type="submit">
-            {sent ? 'Received' : 'Partner with us'}
-          </button>
-          {sent && (
-            <p className="meta" role="status">
-              This form is a demonstration. Nothing was transmitted.
+      <section className="sads-section sads-section--navy">
+        <div className="container sads-split">
+          <aside>
+            <p className="eyebrow">Direct</p>
+            <p className="body">
+              <a href={`mailto:${brand.email}`}>{brand.email}</a>
             </p>
-          )}
-        </form>
+            {showPhone ? <p className="body">{brand.phone}</p> : null}
+            {showLocation ? <p className="body">{brand.location}</p> : null}
+          </aside>
 
-        <aside className="contact__aside">
-          <p className="meta">Contact Samudra Astra</p>
-          <p className="body">
-            Use this page to start a conversation. Direct contact details will
-            be published when they are confirmed.
-          </p>
-        </aside>
-      </div>
+          {status === 'sent' ? (
+            <p className="body" role="status">
+              Your mail client should open with this enquiry addressed to {brand.email}.
+              Send that message to complete the request.
+            </p>
+          ) : (
+            <form className="sads-form" onSubmit={onSubmit}>
+              <label>
+                Name
+                <input name="name" value={form.name} onChange={onChange} required autoComplete="name" />
+              </label>
+              <label>
+                Organisation
+                <input name="organisation" value={form.organisation} onChange={onChange} required />
+              </label>
+              <label>
+                Email
+                <input name="email" type="email" value={form.email} onChange={onChange} required autoComplete="email" />
+              </label>
+              <label>
+                Phone
+                <input name="phone" type="tel" value={form.phone} onChange={onChange} autoComplete="tel" />
+              </label>
+              <label>
+                Subject
+                <select name="subject" value={form.subject} onChange={onChange}>
+                  {enquirySubjects.map((item) => (
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                Message
+                <textarea name="message" rows="6" value={form.message} onChange={onChange} required />
+              </label>
+              {error ? <p className="sheet__error" role="alert">{error}</p> : null}
+              <button className="btn btn--solid" type="submit">
+                Submit Enquiry
+              </button>
+            </form>
+          )}
+        </div>
+      </section>
     </article>
   )
 }

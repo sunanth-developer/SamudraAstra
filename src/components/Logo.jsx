@@ -10,7 +10,7 @@ export function Logo({
 
   return (
     <span className={`logo logo--${variant} ${large ? 'logo--large' : ''} ${className}`}>
-      <img src={src} alt="Samudra Astra" />
+      <img src={src} alt="Samudra Astra Defence Systems" />
     </span>
   )
 }

@@ -1,39 +1,46 @@
+import { Link } from 'react-router-dom'
 import { Seo } from '../components/Seo'
-import { ImageReveal } from '../components/ImageReveal/ImageReveal'
-import { processSteps } from '../data/content'
+import { technologyTracks } from '../data/content'
 
 export function Technology() {
   return (
     <article className="page">
       <Seo
-        title="Technology"
-        description="How Samudra Astra thinks about sensing, detection, understanding and response in the maritime domain."
+        title="Marine Unmanned Systems Technology | Samudra Astra"
+        description="Technology architecture behind the Sentinel Series unmanned maritime systems."
       />
-      <header className="page__hero container">
+      <header className="container sads-page-hero" data-reveal>
+        <p className="sads-crumbs">
+          <Link to="/">Home</Link>
+          <span>/</span>
+          Technology
+        </p>
         <p className="eyebrow">Technology</p>
-        <h1 className="display">Engineered for real-world missions.</h1>
+        <h1 className="section-heading">Engineered from the hull up.</h1>
         <p className="body">
-          A four-stage information architecture: sense, detect, understand,
-          respond. This is a design narrative — not a performance specification.
+          Technology deep-dives into the architecture behind the Sentinel Series.
         </p>
       </header>
 
-      <ol className="page__process container">
-        {processSteps.map((step) => (
-          <li key={step.id}>
-            <div className="page__process-media">
-              <ImageReveal src={step.image} alt={step.title} />
-            </div>
-            <div>
-              <span className="meta">
-                {step.id} · {step.meta}
-              </span>
-              <h2 className="card-heading">{step.title}</h2>
-              <p className="body">{step.body}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
+      <section className="sads-section sads-section--navy">
+        <div className="container">
+          <ol className="sads-timeline">
+            {technologyTracks.map((item) => (
+              <li key={item.id}>
+                <p className="meta">{item.id}</p>
+                <div>
+                  <h2 className="card-heading">{item.title}</h2>
+                  <p className="sads-coming">Coming soon</p>
+                  <p className="body">
+                    Detailed engineering content for this track will be published when it is
+                    released.
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
     </article>
   )
 }

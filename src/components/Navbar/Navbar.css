@@ -47,11 +47,11 @@
 }
 
 .nav__inner {
+  position: relative;
   height: 100%;
   width: min(var(--container-width), calc(100% - (var(--page-pad) * 2)));
   margin-inline: auto;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
   gap: var(--space-5);
 }
@@ -59,13 +59,19 @@
 .nav__brand {
   display: inline-flex;
   align-items: center;
-  justify-self: start;
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .nav__links {
+  position: absolute;
+  left: 50%;
+  top: 50%;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 28px;
+  transform: translate(-50%, -50%);
 }
 
 .nav__link {
@@ -107,7 +113,9 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .nav__cta {
@@ -126,6 +134,18 @@
 
 .nav__cta:hover {
   background: var(--pure-white);
+}
+
+.nav__contact {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ice);
+}
+
+.nav.is-light .nav__contact {
+  color: var(--samudra-blue);
 }
 
 .nav__menu {
@@ -156,19 +176,24 @@
   max-width: 720px;
 }
 
-.nav-overlay__links a {
+.nav-overlay__links a,
+.nav-overlay__links button {
   display: flex;
   align-items: baseline;
   gap: 18px;
+  width: 100%;
+  text-align: left;
   font-family: var(--font-display);
   font-size: clamp(2rem, 8vw, 3.4rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   padding: 10px 0;
   border-bottom: 1px solid var(--border-subtle);
+  color: inherit;
 }
 
-.nav-overlay__links a span {
+.nav-overlay__links a span,
+.nav-overlay__links button span {
   font-family: var(--font-mono);
   font-size: var(--fs-meta);
   letter-spacing: var(--track-meta);
@@ -177,11 +202,12 @@
 
 @media (max-width: 1023px) {
   .nav__inner {
-    grid-template-columns: 1fr auto;
+    display: flex;
   }
 
   .nav__links,
-  .nav__cta {
+  .nav__cta,
+  .nav__contact {
     display: none;
   }
 
@@ -189,7 +215,8 @@
     display: grid;
   }
 
-  .nav-overlay__links a {
+  .nav-overlay__links a,
+  .nav-overlay__links button {
     font-size: clamp(1.7rem, 8vw, 2.4rem);
     min-height: 52px;
     align-items: center;

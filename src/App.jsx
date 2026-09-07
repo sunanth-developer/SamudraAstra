@@ -3,12 +3,13 @@ import { AuthProvider } from './context/AuthContext'
 import { ToastProvider } from './context/ToastContext'
 import { Layout } from './components/Layout'
 import { Home } from './pages/Home'
-import { Systems } from './pages/Systems'
+import { Products } from './pages/Products'
+import { ProductDetail } from './pages/ProductDetail'
 import { Blogs } from './pages/Blogs'
 import { InsightArticle } from './pages/InsightArticle'
 import { About } from './pages/About'
 import { Contact } from './pages/Contact'
-import { Capabilities } from './pages/Capabilities'
+import { Careers } from './pages/Careers'
 import { Technology } from './pages/Technology'
 import { ProtectedRoute } from './admin/components/ProtectedRoute'
 import { AdminLayout } from './admin/layouts/AdminLayout'
@@ -64,17 +65,20 @@ const router = createBrowserRouter([
         element: <Layout />,
         children: [
           { path: '/', element: <Home /> },
+          { path: '/products', element: <Products /> },
+          { path: '/products/:slug', element: <ProductDetail /> },
           { path: '/about', element: <About /> },
-          { path: '/capabilities', element: <Capabilities /> },
-          { path: '/systems', element: <Systems /> },
+          { path: '/careers', element: <Careers /> },
           { path: '/technology', element: <Technology /> },
           { path: '/blogs', element: <Blogs /> },
           { path: '/blogs/:slug', element: <InsightArticle /> },
           { path: '/insights', element: <Navigate to="/blogs" replace /> },
           { path: '/insights/:slug', element: <InsightsSlugRedirect /> },
           { path: '/contact', element: <Contact /> },
+          { path: '/systems', element: <Navigate to="/products" replace /> },
+          { path: '/capabilities', element: <Navigate to="/products" replace /> },
           { path: '/process', element: <Navigate to="/technology" replace /> },
-          { path: '/services', element: <Navigate to="/capabilities" replace /> },
+          { path: '/services', element: <Navigate to="/products" replace /> },
           { path: '*', element: <Navigate to="/" replace /> },
         ],
       },

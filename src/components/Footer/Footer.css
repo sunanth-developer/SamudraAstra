@@ -1,6 +1,6 @@
 .footer {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   padding: var(--space-8) 0 calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
   border-top: 1px solid var(--border-subtle);
   background: var(--rich-black);
@@ -8,11 +8,17 @@
 
 .footer__top {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   gap: var(--space-6);
   padding-bottom: var(--space-7);
   border-bottom: 1px solid var(--border-subtle);
+}
+
+.footer__brand {
+  display: grid;
+  gap: 10px;
+  align-content: start;
 }
 
 .footer__top .logo img {
@@ -30,9 +36,19 @@
   text-align: right;
 }
 
+.footer__parent {
+  margin: 12px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--steel);
+  max-width: 36ch;
+}
+
 .footer__grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: 1fr 1fr 1.4fr;
   gap: var(--space-7);
   align-items: start;
   padding: var(--space-7) 0;

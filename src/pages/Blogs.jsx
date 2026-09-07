@@ -42,9 +42,9 @@ export function Blogs() {
         title="Blogs"
         description="Research, technology and maritime writing from Samudra Astra."
       />
-      <header className="page__hero container">
+      <header className="page__hero container" data-reveal>
         <p className="eyebrow">Journal</p>
-        <h1 className="display">From the depths.</h1>
+        <h1 className="section-heading">From the depths.</h1>
         <p className="body">
           Notes on aquatic defence technology — sensing, autonomy, maritime
           security and the work of building capability beneath the surface.

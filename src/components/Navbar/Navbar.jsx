@@ -3,10 +3,10 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import gsap from 'gsap'
 import { Logo } from '../Logo'
-import { navCta, navLinks } from '../../data/content'
+import { navCta, navLinks, navPrimary } from '../../data/content'
 import { prefersReducedMotion } from '../../animations/config'
 
-export function Navbar() {
+export function Navbar({ onDatasheet }) {
   const [scrolled, setScrolled] = useState(false)
   const [onLight, setOnLight] = useState(false)
   const [open, setOpen] = useState(false)
@@ -79,7 +79,7 @@ export function Navbar() {
     <>
       <header className={`nav ${scrolled ? 'is-scrolled' : ''} ${onLight ? 'is-light' : ''} ${hidden ? 'is-hidden' : ''}`}>
         <div className="nav__inner">
-          <Link to="/" className="nav__brand" aria-label="Samudra Astra home">
+          <Link to="/" className="nav__brand" aria-label="Samudra Astra Defence Systems home">
             <Logo variant={onLight ? 'black' : 'white'} />
           </Link>
 
@@ -96,7 +96,10 @@ export function Navbar() {
           </nav>
 
           <div className="nav__end">
-            <Link to={navCta.href} className="nav__cta">
+            <button className="nav__cta" type="button" onClick={onDatasheet}>
+              {navPrimary.label}
+            </button>
+            <Link to={navCta.href} className="nav__contact">
               {navCta.label}
             </Link>
             <button
@@ -122,6 +125,16 @@ export function Navbar() {
                   {item.label}
                 </Link>
               ))}
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false)
+                  onDatasheet?.()
+                }}
+              >
+                <span>06</span>
+                {navPrimary.label}
+              </button>
             </div>
           </div>
         </div>

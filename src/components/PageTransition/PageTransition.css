@@ -6,3 +6,7 @@
   filter: none;
   perspective: none;
 }
+
+.is-home .page-transition {
+  background: transparent;
+}

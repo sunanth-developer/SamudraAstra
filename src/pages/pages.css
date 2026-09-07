@@ -9,9 +9,10 @@
   padding: calc(var(--nav-height) + var(--safe-top) + var(--space-9)) 0 var(--space-8);
 }
 
-.page__hero .display {
+.page__hero .display,
+.page__hero .section-heading {
   margin: 16px 0 22px;
-  max-width: 16ch;
+  max-width: 18ch;
 }
 
 .page__hero .body {

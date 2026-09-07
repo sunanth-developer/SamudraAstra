@@ -6,9 +6,9 @@ export function Seo({
   image = `${import.meta.env.BASE_URL}images/hero-ocean.jpg`,
 }) {
   useEffect(() => {
-    const fullTitle = title.includes('Samudra Astra')
+    const fullTitle = /Samudra Astra/.test(title)
       ? title
-      : `${title} | Samudra Astra`
+      : `${title} | Samudra Astra Defence Systems`
 
     document.title = fullTitle
 

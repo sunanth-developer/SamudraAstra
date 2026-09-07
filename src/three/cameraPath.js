@@ -66,7 +66,7 @@ export function sampleShowcaseCamera(progress) {
 }
 
 export function showcaseViewIndex(progress) {
-  return Math.min(3, Math.max(0, Math.floor(progress * 3.999)))
+  return Math.min(2, Math.max(0, Math.floor(progress * 2.999)))
 }
 
 const MOBILE_PULL = 1.78

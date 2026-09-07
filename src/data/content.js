@@ -1,301 +1,338 @@
-import { media } from './media'
-
 export const brand = {
-  name: 'Samudra Astra',
-  descriptor: 'Aquatic Defence Technology',
-  supporting: 'Technology for the maritime domain',
+  name: 'Samudra Astra Defence Systems',
+  shortName: 'Samudra Astra',
+  parent: 'A subsidiary of Eunoia Innovations Private Limited',
+  tagline: 'Command the Blue Horizon. No Compromise.',
+  taglineLines: ['Command the', 'Blue Horizon.', 'No Compromise.'],
+  secondary: 'Engineered for resilience. Built for sovereignty.',
+  supporting: "India's next-generation marine unmanned systems for surveillance, reconnaissance, and interception.",
+  email: 'contact@samudraastra.in',
+  phone: '',
+  location: '',
 }
 
 export const navLinks = [
+  { label: 'Products', href: '/products' },
   { label: 'Technology', href: '/technology' },
-  { label: 'Systems', href: '/systems' },
   { label: 'About', href: '/about' },
-  { label: 'Blogs', href: '/blogs' },
+  { label: 'Careers', href: '/careers' },
 ]
 
 export const navCta = { label: 'Contact', href: '/contact' }
+export const navPrimary = { label: 'Request Datasheet', href: '/contact?subject=Product%20Enquiry' }
 
 export const footerLinks = [
-  { label: 'Home', href: '/' },
+  { label: 'Products', href: '/products' },
   { label: 'Technology', href: '/technology' },
-  { label: 'Capabilities', href: '/capabilities' },
-  { label: 'Systems', href: '/systems' },
   { label: 'About', href: '/about' },
-  { label: 'Blogs', href: '/blogs' },
+  { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/contact' },
 ]
 
-export const journeyMarks = [
-  { id: '01', href: '#landing', label: 'Landing' },
-  { id: '02', href: '#mission', label: 'Mission' },
-  { id: '03', href: '#technology', label: 'Technology' },
-  { id: '04', href: '#vessel', label: 'Vessel' },
-  { id: '05', href: '#systems', label: 'Systems' },
-  { id: '06', href: '#about', label: 'About' },
-  { id: '07', href: '#contact', label: 'Contact' },
+export const enquirySubjects = ['General', 'Product Enquiry', 'Partnership', 'Careers']
+
+export const datasheetProducts = [
+  { value: 'sentinel-series', label: 'Sentinel Series' },
+  { value: 'sentinel-m', label: 'Sentinel-M' },
+  { value: 'sentinel-r', label: 'Sentinel-R' },
+  { value: 'sentinel-i', label: 'Sentinel-I' },
 ]
 
-export const serviceLabels = {
-  '01': 'Sensing',
-  '02': 'Autonomy',
-  '03': 'Sensors',
-  '04': 'Intelligence',
-  '05': 'Mission control',
-}
+export const platformSpecs = [
+  { label: 'Length Overall', value: '5.8', unit: 'metres' },
+  { label: 'Beam', value: '1.8–1.9', unit: 'metres' },
+  { label: 'Draft', value: '≤0.7', unit: 'metres' },
+  { label: 'Hull', value: 'Deep-V aluminium monohull', unit: '5083 / 5086' },
+  { label: 'Operational Displacement', value: '≤1.8', unit: 'tonnes' },
+  { label: 'Propulsion', value: 'Twin diesel outdrive', unit: 'Protected propulsion' },
+  { label: 'Autonomy', value: 'Supervised autonomy', unit: 'Remote override' },
+  { label: 'Navigation', value: 'GNSS + INS', unit: 'Radar + AIS' },
+  { label: 'Communications', value: 'LOS + BLOS-ready', unit: '' },
+  { label: 'Sea State Target', value: 'SS3–4', unit: '' },
+]
 
-export const services = [
+export const commonTechnical = [
+  { label: 'Hull Material', value: 'Marine aluminium 5083/5086 or composite option' },
+  { label: 'Propulsion', value: 'Twin diesel outdrive / stern drive' },
+  { label: 'Fuel', value: 'Diesel' },
+  { label: 'Autonomy', value: 'GNSS + INS + radar + AIS; supervised autonomy with remote override' },
+  { label: 'Communications', value: 'LOS radio + BLOS-ready satellite terminal' },
+  { label: 'Payload Interface', value: 'Modular mechanical + electrical (standardized)' },
+  { label: 'Hull Protection', value: 'Multiple watertight compartments' },
+  { label: 'Transport', value: 'Road trailer + container-compatible' },
+]
+
+export const missionModules = [
+  {
+    id: 'isr',
+    name: 'ISR Module',
+    items: ['EO/IR', 'Radar', 'AIS', 'Communications Relay'],
+  },
+  {
+    id: 'hydrography',
+    name: 'Hydrography Module',
+    items: ['Multi-beam sonar', 'Side-scan sonar', 'Sound Velocity Profiler'],
+  },
+  {
+    id: 'electronic',
+    name: 'Electronic Support Module',
+    items: ['SIGINT / EW sensors'],
+  },
+  {
+    id: 'weapons',
+    name: 'Weapons Module',
+    items: ['Remote weapon station', 'Loitering munitions', 'Customer-provided'],
+  },
+]
+
+export const products = [
+  {
+    slug: 'sentinel-m',
+    code: 'SENTINEL-M',
+    role: 'Surveillance',
+    epithet: 'The Persistent Guardian',
+    summary: 'Persistent ISR and Maritime Domain Awareness.',
+    mission: [
+      'Intelligence, Surveillance, and Reconnaissance (ISR)',
+      'Maritime Domain Awareness',
+      'Exclusive Economic Zone (EEZ) monitoring',
+    ],
+    philosophy: 'Range and sensor endurance prioritized over all-out sprint speed.',
+    systems: [
+      'High-performance EO/IR turret',
+      'Maritime navigation radar',
+      'AIS transceiver',
+      'Advanced communications relay (LOS/BLOS)',
+      'Modular mission computer',
+    ],
+    annotations: [
+      { label: 'EO/IR', x: 58, y: 28 },
+      { label: 'Radar', x: 46, y: 18 },
+      { label: 'AIS', x: 62, y: 42 },
+      { label: 'Communications', x: 34, y: 36 },
+      { label: 'Mission computer', x: 52, y: 58 },
+    ],
+    performance: [
+      { label: 'Endurance', value: '24–48', unit: 'hours', description: 'On station' },
+      { label: 'Cruise Speed', value: '20–25', unit: 'knots' },
+      { label: 'Operational Range', value: '400+', unit: 'NM' },
+      { label: 'Payload', value: '200–300', unit: 'kg' },
+    ],
+    useCases: [
+      'Coastal border surveillance',
+      'EEZ patrol',
+      'Search and rescue support',
+      'Maritime law enforcement',
+    ],
+    seo: {
+      title: 'Sentinel-M | Unmanned Maritime Surveillance USV',
+      description:
+        'Sentinel-M is a persistent unmanned maritime surveillance USV for ISR, Maritime Domain Awareness and EEZ monitoring.',
+    },
+  },
+  {
+    slug: 'sentinel-r',
+    code: 'SENTINEL-R',
+    role: 'Reconnaissance & Hydrography',
+    epithet: 'The Precision Navigator',
+    summary: 'Hydrography, mapping and precision navigation.',
+    mission: [
+      'Coastal hydrographic survey',
+      'Seabed mapping',
+      'Channel inspection',
+      'Precision navigation support for naval fleets',
+    ],
+    philosophy:
+      '“Sensor-first” integration — the hull is optimized for acoustic clarity and minimal self-noise, ensuring high-quality sonar returns.',
+    systems: [
+      'Multi-beam echo sounder',
+      'Side-scan sonar',
+      'Sound velocity profiler',
+      'High-accuracy INS/GNSS',
+      'Hydrographic data processing computer',
+    ],
+    annotations: [
+      { label: 'Multi-beam echo sounder', x: 48, y: 72 },
+      { label: 'Side-scan sonar', x: 28, y: 68 },
+      { label: 'SVP', x: 64, y: 60 },
+      { label: 'INS/GNSS', x: 54, y: 24 },
+    ],
+    performance: [
+      { label: 'Survey Speed', value: '6–12', unit: 'knots' },
+      { label: 'Operational Range', value: '400+', unit: 'NM' },
+      { label: 'Payload', value: '200–300', unit: 'kg', description: 'Configurable sensor suites' },
+      { label: 'Stability', value: 'Low-speed', unit: 'survey lines', description: 'Optimized for precision' },
+    ],
+    useCases: [
+      'Port and harbour surveys',
+      'Underwater hazard mapping',
+      'Pipeline and cable route surveys',
+      'Naval charting and bathymetry',
+    ],
+    seo: {
+      title: 'Sentinel-R | Reconnaissance & Hydrography USV',
+      description:
+        'Sentinel-R is a reconnaissance and hydrography USV for coastal survey, seabed mapping and precision navigation support.',
+    },
+  },
+  {
+    slug: 'sentinel-i',
+    code: 'SENTINEL-I',
+    role: 'Interceptor',
+    epithet: 'The Tactical Response Unit',
+    summary: 'Rapid interdiction and force protection.',
+    mission: [
+      'Rapid interdiction',
+      'Coastal patrol',
+      'Force protection',
+      'Swift response to asymmetric threats',
+    ],
+    philosophy:
+      'High-speed efficiency with a compact 6-metre footprint — combining tactical agility with operational reach.',
+    systems: [
+      'Lightweight EO/IR targeting system',
+      'Short-range radar',
+      'BLOS communications for over-the-horizon targeting',
+      'Optional lightweight armament provisions',
+      'Electronic warfare support sensors',
+    ],
+    annotations: [
+      { label: 'EO/IR', x: 56, y: 30 },
+      { label: 'Short-range radar', x: 44, y: 18 },
+      { label: 'BLOS communications', x: 32, y: 36 },
+      { label: 'Payload bay', x: 50, y: 56 },
+    ],
+    performance: [
+      { label: 'Maximum Speed', value: '40–45+', unit: 'knots' },
+      { label: 'Cruise Speed', value: '20–25', unit: 'knots' },
+      { label: 'Operational Range', value: '400+', unit: 'NM' },
+      { label: 'Endurance', value: '24+', unit: 'hours', description: 'At cruise' },
+      { label: 'Payload', value: '200', unit: 'kg' },
+    ],
+    useCases: [
+      'Anti-piracy and anti-smuggling operations',
+      'Force protection for high-value units',
+      'Rapid response to maritime threats',
+      'Counter-USV operations',
+    ],
+    seo: {
+      title: 'Sentinel-I | High-Speed Maritime Interceptor USV',
+      description:
+        'Sentinel-I is a high-speed unmanned maritime interceptor for rapid interdiction, coastal patrol and force protection.',
+    },
+  },
+]
+
+export const whyPillars = [
   {
     id: '01',
-    name: 'Underwater Surveillance',
-    slug: 'underwater-surveillance',
-    description: 'Persistent sensing and situational awareness for complex maritime environments.',
-    copy: 'A technology area for persistent underwater awareness — sensing architectures designed to operate in environments where visibility, access and communication are constrained.',
-    image: media.ocean,
+    title: 'Modular',
+    line: 'Standardized payload interfaces that enable multi-role versatility.',
   },
   {
     id: '02',
-    name: 'Autonomous Systems',
-    slug: 'autonomous-systems',
-    description: 'Intelligent unmanned surface platforms designed to operate where persistent presence is required.',
-    copy: 'Unmanned surface vehicles under development for persistent maritime operations, reconnaissance and data collection — described as a capability area, not a fielded product.',
-    image: media.usv,
+    title: 'Survivable',
+    line: 'Redundant architectures that ensure mission continuity even in the face of system failures.',
   },
   {
     id: '03',
-    name: 'Sonar & Sensing',
-    slug: 'sonar-sensing',
-    description: 'Advanced sensing architectures for detecting, classifying and understanding underwater activity.',
-    copy: 'Sensing and sonar architectures intended to detect, classify and interpret activity beneath the surface — without presenting unverified performance claims.',
-    image: media.control,
+    title: 'Affordable',
+    line: 'Commercial engineering principles applied to defence requirements, delivering high capability at low cost.',
   },
   {
     id: '04',
-    name: 'Maritime Intelligence',
-    slug: 'maritime-intelligence',
-    description: 'Transforming distributed sensor data into actionable operational awareness.',
-    copy: 'A development area for fusing distributed sensor information into a coherent maritime picture for operators and mission systems.',
-    image: media.engineer,
-  },
-  {
-    id: '05',
-    name: 'Mission Systems',
-    slug: 'mission-systems',
-    description: 'Integrated technologies engineered for demanding maritime missions.',
-    copy: 'Integration of sensing, autonomy, communication and operator interfaces into a unified mission architecture.',
-    image: media.lab,
+    title: 'Indigenous',
+    line: 'Conceived in India, engineered in India, built in India, for India and for the world.',
   },
 ]
 
-export const systems = [
+export const scalePoints = [
+  {
+    title: 'Low Acquisition Cost',
+    body: 'Commercially proven marine engines and modular electronics reduce development risk and total cost of ownership.',
+  },
+  {
+    title: 'Scalable Indian Manufacturing',
+    body: "Designed for rapid production at scale, leveraging India's defence manufacturing ecosystem.",
+  },
+]
+
+export const autonomyLayers = [
+  { id: '01', title: 'USV', items: ['Sentinel-class hull'] },
+  { id: '02', title: 'Autonomy stack', items: ['Supervised autonomy', 'Remote override', 'Loss-of-link procedures'] },
+  { id: '03', title: 'Navigation sensors', items: ['GNSS', 'INS', 'Radar', 'AIS'] },
+  { id: '04', title: 'Communications', items: ['LOS', 'BLOS-ready'] },
+  { id: '05', title: 'Command & Control', items: ['Naval C2 integration'] },
+]
+
+export const developmentStatus = [
   {
     id: '01',
-    name: 'Autonomous Surface Systems',
-    meta: 'Capability',
-    domain: 'Surface',
-    mode: 'Autonomous',
-    mission: 'Surveillance',
-    body: 'Unmanned surface vehicles for persistent maritime operations, reconnaissance and data collection. Described here as a system development area — not a fielded product catalogue.',
-    image: media.usv,
+    when: 'August 2026',
+    title: 'Incorporation',
+    body: 'Samudra Astra Defence Systems incorporated as a subsidiary of Eunoia Innovations.',
   },
   {
     id: '02',
-    name: 'Underwater Sensor Systems',
-    meta: 'Technology area',
-    domain: 'Deep water',
-    mode: 'Sensing',
-    mission: 'Detection',
-    body: 'Advanced sensing technologies designed for challenging underwater environments, where light, range and access are limited.',
-    image: media.deepWater,
+    when: 'Preliminary Design Phase',
+    title: 'Benchmark study',
+    body: 'Sentinel Series benchmark study completed.',
   },
   {
     id: '03',
-    name: 'Maritime Surveillance',
-    meta: 'Capability',
-    domain: 'Maritime',
-    mode: 'Persistent',
-    mission: 'Awareness',
-    body: 'Integrated sensing and intelligence solutions for monitoring critical maritime environments — from coastal approaches to open water.',
-    image: media.ocean,
-  },
-  {
-    id: '04',
-    name: 'Mission Control',
-    meta: 'System development',
-    domain: 'Command',
-    mode: 'Fused',
-    mission: 'Operations',
-    body: 'Command, data fusion and operational interfaces connecting distributed maritime systems into a single working picture.',
-    image: media.control,
+    when: 'Coming soon',
+    title: 'Prototype development',
+    body: 'Prototype development announcement.',
   },
 ]
 
-export const processSteps = [
-  {
-    id: '01',
-    title: 'Sense',
-    body: 'Capture signals from the surrounding environment — acoustic, environmental and operational.',
-    image: media.ocean,
-    meta: 'Sonar',
-  },
-  {
-    id: '02',
-    title: 'Detect',
-    body: 'Identify objects, patterns and anomalies against a complex underwater background.',
-    image: media.auv,
-    meta: 'Target',
-  },
-  {
-    id: '03',
-    title: 'Understand',
-    body: 'Fuse multiple data sources into a coherent picture operators can act on.',
-    image: media.engineer,
-    meta: 'Data',
-  },
-  {
-    id: '04',
-    title: 'Respond',
-    body: 'Deliver actionable intelligence to the mission layer — calmly, and with context.',
-    image: media.lab,
-    meta: 'Mission',
-  },
+export const technologyTracks = [
+  { id: '01', title: 'Hull Design & Hydrodynamics' },
+  { id: '02', title: 'Propulsion & Power Architecture' },
+  { id: '03', title: 'Autonomy Stack & C2 Integration' },
+  { id: '04', title: 'Payload Modularity Framework' },
+  { id: '05', title: 'Manufacturing & Supply Chain' },
 ]
 
-export const principles = [
-  {
-    title: 'Autonomy',
-    body: 'Autonomous decision-making for complex maritime environments.',
-  },
-  {
-    title: 'Sensing',
-    body: 'Advanced underwater perception and detection.',
-  },
-  {
-    title: 'AI & Fusion',
-    body: 'Converting distributed information into meaningful intelligence.',
-  },
-  {
-    title: 'Communication',
-    body: 'Reliable information exchange across challenging operating environments.',
-  },
-  {
-    title: 'Integration',
-    body: 'Connecting sensors, platforms and mission systems into a unified architecture.',
-  },
+export const aboutFacts = [
+  { label: 'Domain Focus', value: 'Marine Unmanned Systems, Defence Applications' },
+  { label: 'Capabilities', value: 'System Architecture, Integration, Testing, Production' },
+  { label: 'Partners', value: 'Indian Navy, Defence Research & Development Organisation, Domestic Industry' },
 ]
 
-export const principleNotes = [
-  'Engineering around the actual constraint of the maritime domain.',
-  'Capability-level language until systems are formally announced.',
-  'Precision over spectacle. Depth over noise.',
-]
-
-export const engineeringSteps = [
-  { id: '01', title: 'Research' },
+export const heritageSteps = [
+  { id: '01', title: 'Conceive' },
   { id: '02', title: 'Design' },
-  { id: '03', title: 'Prototype' },
-  { id: '04', title: 'Integrate' },
-  { id: '05', title: 'Test' },
-  { id: '06', title: 'Deploy' },
+  { id: '03', title: 'Integrate' },
+  { id: '04', title: 'Test' },
+  { id: '05', title: 'Deliver' },
 ]
 
-export const whyStatements = [
-  {
-    title: 'Innovation',
-    body: 'Developing technology for the challenges ahead.',
-  },
-  {
-    title: 'Autonomy',
-    body: 'Enabling new approaches to maritime operations.',
-  },
-  {
-    title: 'Integration',
-    body: 'Bringing sensing, intelligence and platforms together.',
-  },
-  {
-    title: 'Mission focus',
-    body: 'Engineering technology around real-world operational requirements.',
-  },
-]
-
-export const aboutPillars = [
-  { id: '01', title: 'Research' },
-  { id: '02', title: 'Engineering' },
-  { id: '03', title: 'Systems' },
-  { id: '04', title: 'Mission' },
-]
-
-export const securityFeatures = [
+export const designPhilosophy = [
   {
     id: '01',
-    title: 'Research',
-    body: 'Inquiry first. The maritime domain is treated as the constraint, not the backdrop.',
+    title: 'Redundancy is Not Optional',
+    body: 'For unmanned platforms, recovery after an offshore mechanical failure is substantially more difficult than for crewed vessels. Our systems feature distributed power, redundant steering, and fault-tolerant control — no single-point failure should result in loss of vessel control.',
   },
   {
     id: '02',
-    title: 'Engineering',
-    body: 'From sketch to integration, every interface is specified with intent.',
+    title: 'Modularity Drives Versatility',
+    body: 'A single 5.8-metre hull serves multiple missions through interchangeable payload bays. This reduces logistics burden, lowers total ownership cost, and enables rapid reconfiguration for evolving threats.',
   },
   {
     id: '03',
-    title: 'Validation',
-    body: 'Laboratory performance is a starting point. The environment is the test.',
-  },
-  {
-    id: '04',
-    title: 'Mission layer',
-    body: 'Sensing, autonomy and operator interfaces are designed as one system.',
+    title: 'Commercial Engineering, Defence Standards',
+    body: "We leverage commercially available marine propulsion systems, proven autonomy stacks, and scalable manufacturing techniques — reducing development risk while meeting the rigorous qualification standards of India's Armed Forces.",
   },
 ]
 
-export const fieldNodes = [
-  { id: 'S1', name: 'Surface', coord: 'Layer 01', x: 22, y: 28 },
-  { id: 'S2', name: 'Sub-surface', coord: 'Layer 02', x: 48, y: 22 },
-  { id: 'S3', name: 'Deep water', coord: 'Layer 03', x: 74, y: 36 },
-  { id: 'S4', name: 'Sensing', coord: 'Layer 04', x: 36, y: 58 },
-  { id: 'S5', name: 'Intelligence', coord: 'Layer 05', x: 62, y: 66 },
-  { id: 'S6', name: 'Autonomy', coord: 'Layer 06', x: 84, y: 54 },
+export const redundancyPaths = [
+  ['Power A', 'Power B'],
+  ['Control A', 'Control B'],
+  ['Steering A', 'Steering B'],
+  ['Communication Path A', 'Communication Path B'],
 ]
 
-export const articles = [
-  {
-    category: 'Technology',
-    title: 'The future of autonomous underwater systems',
-    date: '12 Aug 2026',
-    image: media.auv,
-    href: '/blogs',
-  },
-  {
-    category: 'Maritime',
-    title: 'Why underwater situational awareness matters',
-    date: '28 Jul 2026',
-    image: media.ocean,
-    href: '/blogs',
-  },
-  {
-    category: 'Defence',
-    title: 'The evolution of maritime surveillance',
-    date: '04 Jul 2026',
-    image: media.deepWater,
-    href: '/blogs',
-  },
-  {
-    category: 'Research',
-    title: 'Building indigenous capability beneath the surface',
-    date: '18 Jun 2026',
-    image: media.lab,
-    href: '/blogs',
-  },
-  {
-    category: 'Company',
-    title: 'The challenge of underwater autonomy',
-    date: '02 Jun 2026',
-    image: media.engineer,
-    href: '/blogs',
-  },
-]
-
-export const stats = [
-  { value: 'Maritime', label: 'Domain' },
-  { value: 'Active', label: 'System status' },
-  { value: 'Autonomous', label: 'Technology' },
-]
+export function getProduct(slug) {
+  return products.find((item) => item.slug === slug)
+}
