@@ -49,3 +49,14 @@
 .tspec--compact .tspec__value {
   font-size: clamp(1.1rem, 1.8vw, 1.45rem);
 }
+
+@media (max-width: 767px) {
+  .tspec--compact {
+    min-width: 0;
+    flex: 1 1 40%;
+  }
+
+  .tspec--compact .tspec__value {
+    font-size: 1.05rem;
+  }
+}

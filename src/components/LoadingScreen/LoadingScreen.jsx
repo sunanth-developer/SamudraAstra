@@ -1,47 +1,40 @@
 import { useEffect, useState } from 'react'
-import { useProgress } from '@react-three/drei'
 import { Logo } from '../Logo'
 import { useVesselProgress } from '../../three/VesselProgress'
 import './LoadingScreen.css'
 
 export function LoadingScreen() {
-  const { progress: network } = useProgress()
   const { readyRef, failedRef, subscribe } = useVesselProgress()
   const [visible, setVisible] = useState(true)
   const [phase, setPhase] = useState('loading')
-  const [progress, setProgress] = useState(8)
+  const [progress, setProgress] = useState(12)
 
   useEffect(() => {
     const started = performance.now()
     let frame
+    const hide = () => {
+      setPhase('ready')
+      setProgress(100)
+      window.setTimeout(() => setVisible(false), 280)
+    }
     const tick = () => {
-      const ready = readyRef.current
-      const failed = failedRef.current
       const elapsed = performance.now() - started
-      setProgress((prev) => {
-        if (ready || failed) return 100
-        return Math.max(prev, Math.min(96, network || prev + 0.4))
-      })
-      if ((ready || failed) && elapsed > 500) {
-        setPhase('ready')
-        window.setTimeout(() => setVisible(false), 420)
+      setProgress((prev) => Math.min(100, Math.max(prev, elapsed / 18)))
+      if (readyRef.current || failedRef.current || elapsed > 2200) {
+        hide()
         return
       }
       frame = requestAnimationFrame(tick)
     }
     frame = requestAnimationFrame(tick)
-    const unsub = subscribe(() => {})
-    const failSafe = window.setTimeout(() => {
-      setPhase('ready')
-      setProgress(100)
-      setVisible(false)
-    }, 45000)
+    const unsub = subscribe(() => {
+      if (readyRef.current || failedRef.current) hide()
+    })
     return () => {
       cancelAnimationFrame(frame)
       unsub()
-      window.clearTimeout(failSafe)
     }
-  }, [failedRef, network, readyRef, subscribe])
+  }, [failedRef, readyRef, subscribe])
 
   if (!visible) return null
 
@@ -54,7 +47,6 @@ export function LoadingScreen() {
       <div className="loader__track" aria-hidden="true">
         <span style={{ width: `${progress}%` }} />
       </div>
-      <p className="loader__meta">Loading vessel system</p>
     </div>
   )
 }

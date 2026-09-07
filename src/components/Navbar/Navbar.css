@@ -215,9 +215,17 @@
     display: grid;
   }
 
+  .nav-overlay {
+    padding:
+      calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 16px)
+      max(16px, env(safe-area-inset-right, 0px))
+      max(24px, env(safe-area-inset-bottom, 0px))
+      max(16px, env(safe-area-inset-left, 0px));
+  }
+
   .nav-overlay__links a,
   .nav-overlay__links button {
-    font-size: clamp(1.7rem, 8vw, 2.4rem);
+    font-size: clamp(1.5rem, 8vw, 2.2rem);
     min-height: 52px;
     align-items: center;
   }

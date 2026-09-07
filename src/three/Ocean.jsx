@@ -1,6 +1,7 @@
 import { useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
+import { oceanGeometry } from './geometries'
 
 const vertex = `
   uniform float uTime;
@@ -34,7 +35,7 @@ const fragment = `
   }
 `
 
-export function Ocean({ underRef, simplified = false }) {
+export function Ocean({ underRef }) {
   const mat = useRef()
   const uniforms = useMemo(
     () => ({
@@ -58,8 +59,7 @@ export function Ocean({ underRef, simplified = false }) {
   })
 
   return (
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.08, 0]}>
-      <planeGeometry args={simplified ? [60, 60, 28, 28] : [80, 80, 96, 96]} />
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.08, 0]} geometry={oceanGeometry}>
       <shaderMaterial
         ref={mat}
         uniforms={uniforms}

@@ -84,17 +84,29 @@
   --track-meta: 0.2em;
 }
 
+@media (max-width: 1023px) {
+  :root {
+    --nav-height: 68px;
+    --section-padding: 4.6rem;
+    --page-pad: 24px;
+    --fs-section: clamp(2.1rem, 6vw, 3.2rem);
+    --fs-display: clamp(2.1rem, 7vw, 3.4rem);
+    --fs-hero: clamp(2.4rem, 8vw, 3.8rem);
+  }
+}
+
 @media (max-width: 767px) {
   :root {
-    --nav-height: 64px;
-    --section-padding: 4.2rem;
-    --page-pad: 20px;
-    --space-8: 48px;
-    --space-9: 64px;
-    --fs-body: 0.98rem;
-    --fs-card: 1.25rem;
-    --fs-section: clamp(2rem, 9vw, 2.7rem);
-    --fs-display: clamp(2.1rem, 11vw, 3rem);
-    --fs-hero: clamp(2.5rem, 13vw, 3.4rem);
+    --nav-height: 60px;
+    --section-padding: 3.6rem;
+    --page-pad: 16px;
+    --space-7: 36px;
+    --space-8: 40px;
+    --space-9: 56px;
+    --fs-body: 0.95rem;
+    --fs-card: 1.2rem;
+    --fs-section: clamp(1.85rem, 8.4vw, 2.4rem);
+    --fs-display: clamp(1.85rem, 9vw, 2.5rem);
+    --fs-hero: clamp(2rem, 10.5vw, 2.7rem);
   }
 }

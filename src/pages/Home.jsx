@@ -407,6 +407,15 @@ function HomeStory() {
   )
 }
 
+function Boot() {
+  const { setReady } = useVesselProgress()
+  useEffect(() => {
+    const t = window.setTimeout(() => setReady(true), 400)
+    return () => window.clearTimeout(t)
+  }, [setReady])
+  return null
+}
+
 export function Home() {
   return (
     <VesselProgressProvider>
@@ -425,6 +434,7 @@ export function Home() {
           slogan: brand.tagline,
         }}
       />
+      <Boot />
       <LoadingScreen />
       <Suspense fallback={null}>
         <VesselCanvas />

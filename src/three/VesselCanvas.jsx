@@ -1,9 +1,8 @@
 import { Component, Suspense, useEffect, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { AdaptiveDpr } from '@react-three/drei'
 import { VesselScene } from './VesselScene'
 import { useVesselProgress } from './VesselProgress'
-import { heroCameraStart } from './cameraPath'
+import { heroCameraStart, VESSEL_MOBILE_FOV, VESSEL_VIEW_FOV } from './cameraPath'
 import { isSimplifiedScene, shouldUseVesselScene } from '../utils/webgl'
 import './VesselCanvas.css'
 
@@ -30,22 +29,26 @@ class SceneBoundary extends Component {
 export function VesselCanvas() {
   const { progressRef, showcaseRef, showcaseBlendRef, setReady, setFailed } = useVesselProgress()
   const pointerRef = useRef({ x: 0, y: 0 })
+  const failedOnce = useRef(false)
   const [enabled, setEnabled] = useState(false)
-  const [simplified, setSimplified] = useState(() => isSimplifiedScene())
+  const [simplified] = useState(() => isSimplifiedScene())
   const [visible, setVisible] = useState(true)
 
+  const fail = () => {
+    if (failedOnce.current) return
+    failedOnce.current = true
+    setEnabled(false)
+    setFailed(true)
+    setReady(true)
+  }
+
   useEffect(() => {
-    const allow = shouldUseVesselScene()
-    setEnabled(allow)
-    const media = window.matchMedia('(max-width: 1023px)')
-    const sync = () => setSimplified(media.matches)
-    sync()
-    media.addEventListener('change', sync)
-    if (!allow) {
-      setFailed(true)
-      setReady(true)
+    if (!shouldUseVesselScene()) {
+      fail()
+      return undefined
     }
-    return () => media.removeEventListener('change', sync)
+    const start = window.setTimeout(() => setEnabled(true), 50)
+    return () => window.clearTimeout(start)
   }, [setFailed, setReady])
 
   useEffect(() => {
@@ -67,32 +70,34 @@ export function VesselCanvas() {
 
   return (
     <div className="vessel-canvas" aria-hidden="true">
-      <SceneBoundary
-        onError={() => {
-          setFailed(true)
-          setReady(true)
-        }}
-      >
+      <SceneBoundary onError={fail}>
         <Canvas
-          dpr={simplified ? [1, 1] : [1, 1.5]}
+          dpr={1}
           gl={{
             antialias: !simplified,
-            powerPreference: simplified ? 'low-power' : 'high-performance',
+            powerPreference: 'default',
             alpha: false,
+            failIfMajorPerformanceCaveat: false,
           }}
           camera={{
             position: heroCameraStart(simplified).position,
-            fov: simplified ? 54 : 42,
+            fov: simplified ? VESSEL_MOBILE_FOV : VESSEL_VIEW_FOV,
             near: 0.1,
             far: 90,
           }}
-          shadows={!simplified}
+          shadows={false}
           frameloop={visible ? 'always' : 'never'}
-          onCreated={() => {
-            setFailed(false)
+          onCreated={({ gl }) => {
+            gl.domElement.addEventListener(
+              'webglcontextlost',
+              (event) => {
+                event.preventDefault()
+                fail()
+              },
+              false
+            )
           }}
         >
-          <AdaptiveDpr />
           <Suspense fallback={null}>
             <VesselScene
               progressRef={progressRef}

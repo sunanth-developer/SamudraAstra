@@ -119,7 +119,14 @@
 
 @media (max-width: 560px) {
   .footer__top .logo img {
-    height: 64px;
+    height: 52px;
+  }
+
+  .footer__parent,
+  .footer__muted,
+  .footer__col a {
+    max-width: none;
+    word-break: break-word;
   }
 
   .footer__grid {

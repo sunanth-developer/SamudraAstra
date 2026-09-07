@@ -49,6 +49,14 @@
 }
 
 @media (max-width: 767px) {
+  .usv-view {
+    min-height: 220px;
+  }
+
+  .usv-view img {
+    min-height: 220px;
+  }
+
   .usv-view__marks {
     display: none;
   }

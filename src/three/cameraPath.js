@@ -69,10 +69,6 @@ export function showcaseViewIndex(progress) {
   return Math.min(2, Math.max(0, Math.floor(progress * 2.999)))
 }
 
-const MOBILE_PULL = 1.78
-const MOBILE_LOOK_LIFT = 0.34
-const DESKTOP_PULL = 1.14
-
 function pullCamera(sample, pull, lift = 0) {
   const look = [sample.look[0], sample.look[1] + lift, sample.look[2]]
   return {
@@ -87,17 +83,22 @@ function pullCamera(sample, pull, lift = 0) {
 }
 
 export function fitMobileCamera(sample) {
-  return pullCamera(sample, MOBILE_PULL, MOBILE_LOOK_LIFT)
+  return pullCamera(sample, 1.78, 0.34)
 }
 
 export function fitDesktopCamera(sample) {
-  return pullCamera(sample, DESKTOP_PULL)
+  return pullCamera(sample, 1.08)
 }
 
+export const fitViewCamera = fitDesktopCamera
+
 export const VESSEL_VIEW_SCALE = {
+  mobile: 0.48,
   desktop: 1,
-  mobile: 0.56,
 }
+
+export const VESSEL_VIEW_FOV = 42
+export const VESSEL_MOBILE_FOV = 50
 
 export function heroCameraStart(mobile = false) {
   const start = {

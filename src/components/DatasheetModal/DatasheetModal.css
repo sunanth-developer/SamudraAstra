@@ -78,3 +78,22 @@
   color: var(--signal-orange);
   font-size: 0.9rem;
 }
+
+@media (max-width: 767px) {
+  .sheet {
+    padding: 0;
+    align-items: end;
+  }
+
+  .sheet__panel {
+    width: 100%;
+    max-height: min(92svh, 100dvh);
+    padding: 24px 16px calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .sheet__actions,
+  .sheet__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

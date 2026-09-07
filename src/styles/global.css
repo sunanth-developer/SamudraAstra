@@ -357,12 +357,27 @@ h3 {
     display: none;
   }
 
+  .btn,
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+  }
+
   .btn {
     min-height: 48px;
+    letter-spacing: 0.1em;
   }
 
   .body {
     font-size: var(--fs-body);
+    max-width: none;
+  }
+
+  .container {
+    width: min(var(--container-width), calc(100% - (var(--page-pad) * 2)));
   }
 }
 

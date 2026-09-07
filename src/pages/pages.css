@@ -139,7 +139,8 @@
     padding: calc(var(--nav-height) + var(--safe-top) + var(--space-7)) 0 var(--space-7);
   }
 
-  .page__hero .display {
+  .page__hero .display,
+  .page__hero .section-heading {
     max-width: none;
   }
 

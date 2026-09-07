@@ -589,26 +589,101 @@
   }
 
   .sads-family__visual .usv-view img {
-    min-height: 42vh;
+    min-height: 38vh;
+  }
+
+  .sads-hero {
+    min-height: 100dvh;
+    min-height: 100svh;
+  }
+
+  .sads-hero__media img {
+    object-position: center 12%;
+  }
+
+  .sads-hero__wash {
+    background:
+      linear-gradient(180deg, rgba(5, 5, 5, 0.22) 0%, transparent 16%, transparent 42%, rgba(5, 5, 5, 0.94) 78%);
+  }
+
+  .sads-hero__grid {
+    mask-image: radial-gradient(circle at 50% 22%, #000 10%, transparent 58%);
+  }
+
+  .sads-hero__line,
+  .sads-name {
+    white-space: normal;
+  }
+
+  .sads-hero h1,
+  .sads-hero .hero-heading {
+    font-size: clamp(2.1rem, 7.2vw, 3.4rem);
   }
 
   .sads-sentinel {
-    height: 260svh;
+    height: 220svh;
   }
 
   .sads-sentinel__pin {
     align-items: end;
-    padding-bottom: 28px;
+    height: 100dvh;
+    height: 100svh;
+    padding:
+      calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 12px)
+      0
+      calc(20px + env(safe-area-inset-bottom, 0px));
+    overflow: hidden;
   }
 
   .sads-sentinel__copy {
     max-width: none;
-    padding: 20px 0 8px;
-    background: linear-gradient(180deg, transparent, rgba(5, 5, 5, 0.78) 28%);
+    padding: 16px 0 0;
+    background: linear-gradient(180deg, transparent, rgba(5, 5, 5, 0.82) 22%);
+  }
+
+  .sads-sentinel .section-heading {
+    font-size: clamp(1.7rem, 6vw, 2.3rem);
+  }
+
+  .sads-sentinel .sads-name {
+    font-size: clamp(1.8rem, 7vw, 2.6rem);
+  }
+
+  .sads-sentinel .sads-list {
+    display: none;
+  }
+
+  .sads-views {
+    margin-top: 20px;
+    gap: 0;
   }
 }
 
 @media (max-width: 767px) {
+  .sads-hero__inner {
+    padding:
+      calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 16px)
+      0
+      calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .sads-hero h1,
+  .sads-hero .hero-heading {
+    margin: 8px 0 14px;
+    font-size: clamp(1.9rem, 9.6vw, 2.5rem);
+    line-height: 1.05;
+  }
+
+  .sads-hero__support {
+    font-size: 0.92rem;
+  }
+
+  .sads-hero__telemetry {
+    gap: 14px 20px;
+    margin-top: 22px;
+    padding-top: 16px;
+  }
+
   .sads-hero__actions,
   .sads-hero__actions .btn,
   .sads-actions,
@@ -617,11 +692,8 @@
     justify-content: center;
   }
 
-  .sads-hero__line {
-    white-space: normal;
-  }
-
   .sads-name {
+    font-size: clamp(1.7rem, 9vw, 2.4rem);
     white-space: normal;
   }
 
@@ -634,13 +706,49 @@
     grid-template-columns: 1fr;
   }
 
+  .sads-pillars article,
+  .sads-module,
+  .sads-scale article {
+    min-height: 0;
+  }
+
   .sads-path b {
     display: none;
+  }
+
+  .sads-page-hero {
+    padding: calc(var(--nav-height) + var(--safe-top) + 36px) 0 32px;
   }
 
   .sads-page-hero .display,
   .sads-page-hero .section-heading {
     max-width: none;
+  }
+
+  .sads-family article {
+    padding: 36px 0;
+    gap: 24px;
+  }
+
+  .sads-timeline li {
+    gap: 10px;
+    padding: 22px 0;
+  }
+
+  .sads-layer {
+    grid-template-columns: 56px 1fr;
+    gap: 12px;
+    padding: 16px 0;
+  }
+
+  .sads-sentinel {
+    height: 200svh;
+  }
+
+  .sads-form input,
+  .sads-form select,
+  .sads-form textarea {
+    font-size: 16px;
   }
 }
 

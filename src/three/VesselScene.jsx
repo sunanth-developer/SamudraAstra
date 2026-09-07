@@ -3,8 +3,8 @@ import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { Ocean } from './Ocean'
 import { Vessel } from './Vessel'
-import { Particles } from './Particles'
-import { fitDesktopCamera, fitMobileCamera, sampleCamera, sampleShowcaseCamera } from './cameraPath'
+import { shadowGeometry } from './geometries'
+import { fitDesktopCamera, fitMobileCamera, sampleCamera, sampleShowcaseCamera, VESSEL_MOBILE_FOV, VESSEL_VIEW_FOV } from './cameraPath'
 
 function mixSample(a, b, t) {
   return {
@@ -55,14 +55,22 @@ export function VesselScene({
     underRef.current = sample.under
     nextPos.set(...sample.position)
     target.set(...sample.look)
+    if (simplified) {
+      const width = state.size.width
+      const height = state.size.height
+      const fullH = height * 1.46
+      state.camera.setViewOffset(width, fullH, 0, fullH - height, width, height)
+    } else if (state.camera.view) {
+      state.camera.clearViewOffset()
+    }
     const damp = 1 - Math.exp(-3.6 * delta)
     state.camera.position.lerp(nextPos, damp)
     state.camera.lookAt(target)
-    const fov = simplified ? 54 : 42
+    const fov = simplified ? VESSEL_MOBILE_FOV : VESSEL_VIEW_FOV
     if (Math.abs(state.camera.fov - fov) > 0.01) {
       state.camera.fov = fov
-      state.camera.updateProjectionMatrix()
     }
+    state.camera.updateProjectionMatrix()
     if (fogRef.current) fogRef.current.density = sample.fog * (1 - 0.42 * highlight)
     if (hemiRef.current) {
       hemiRef.current.intensity = (simplified ? 0.92 : 0.55) + 0.5 * highlight
@@ -105,11 +113,14 @@ export function VesselScene({
       <directionalLight ref={fillRef} position={[-7, 2.4, -5]} intensity={simplified ? 0.7 : 0.34} color="#ffffff" />
       <directionalLight ref={rimRef} position={[-3.2, 3.4, 5.6]} intensity={simplified ? 0.85 : 0.22} color="#f3f7fb" />
       <pointLight ref={faceRef} position={[0.2, 2.8, 6.4]} intensity={simplified ? 0.95 : 0.18} color="#fff4e8" distance={18} decay={2} />
-      <Particles count={simplified ? 36 : 140} />
-      <Ocean underRef={underRef} simplified={simplified} />
+      <Ocean underRef={underRef} />
       {!simplified && (
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.12, 0]} receiveShadow>
-          <planeGeometry args={[80, 80]} />
+        <mesh
+          rotation={[-Math.PI / 2, 0, 0]}
+          position={[0, -0.12, 0]}
+          geometry={shadowGeometry}
+          receiveShadow
+        >
           <shadowMaterial transparent opacity={0.28} />
         </mesh>
       )}

@@ -35,7 +35,7 @@
 @media (max-width: 767px) {
   .nav .logo img,
   .nav.is-scrolled .logo img {
-    height: 46px;
+    height: 40px;
   }
 
   .loader .logo img {

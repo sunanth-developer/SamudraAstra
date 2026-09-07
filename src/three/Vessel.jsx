@@ -59,9 +59,11 @@ export function Vessel({ progressRef, pointerRef, underRef, showcaseBlendRef, si
       <group ref={lead}>
         <GlbVessel />
       </group>
-      <group ref={auv}>
-        <AuvCraft />
-      </group>
+      {!simplified && (
+        <group ref={auv}>
+          <AuvCraft />
+        </group>
+      )}
     </group>
   )
 }
