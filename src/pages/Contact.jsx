@@ -62,9 +62,9 @@ export function Contact() {
 
       <section className="sads-section sads-section--navy">
         <div className="container sads-split">
-          <aside>
+          <aside className="sads-contact-aside">
             <p className="eyebrow">Direct</p>
-            <p className="body">
+            <p className="display sads-contact-mail">
               <a href={`mailto:${brand.email}`}>{brand.email}</a>
             </p>
             {showPhone ? <p className="body">{brand.phone}</p> : null}

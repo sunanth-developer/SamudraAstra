@@ -15,7 +15,7 @@ export function Careers() {
         <p className="body">
           Roles will be published here when they are open. Until then, send an enquiry.
         </p>
-        <div className="sads-hero__actions">
+        <div className="sads-actions">
           <Link className="btn btn--solid" to="/contact?subject=Careers">
             Contact Us
           </Link>

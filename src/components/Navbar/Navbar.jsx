@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import gsap from 'gsap'
 import { Logo } from '../Logo'
-import { navCta, navLinks, navPrimary } from '../../data/content'
+import { navCta, navLinks, navPrimary, products } from '../../data/content'
 import { prefersReducedMotion } from '../../animations/config'
 
 export function Navbar({ onDatasheet }) {
@@ -11,13 +11,15 @@ export function Navbar({ onDatasheet }) {
   const [onLight, setOnLight] = useState(false)
   const [open, setOpen] = useState(false)
   const [hidden, setHidden] = useState(true)
+  const [catalogue, setCatalogue] = useState(false)
   const overlayRef = useRef(null)
   const panelRef = useRef(null)
   const linksRef = useRef(null)
+  const megaRef = useRef(null)
   const location = useLocation()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => setScrolled(window.scrollY > 16)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -41,6 +43,7 @@ export function Navbar({ onDatasheet }) {
 
   useEffect(() => {
     setOpen(false)
+    setCatalogue(false)
   }, [location.pathname])
 
   useEffect(() => {
@@ -63,15 +66,23 @@ export function Navbar({ onDatasheet }) {
         return
       }
       gsap.fromTo(overlayRef.current, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'power2.out' })
-      gsap.fromTo(panelRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' })
+      gsap.fromTo(panelRef.current, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' })
       gsap.fromTo(
         linksRef.current?.querySelectorAll('a, button') ?? [],
-        { y: 24, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.65, stagger: 0.06, delay: 0.1, ease: 'power3.out' }
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.05, delay: 0.08, ease: 'power3.out' }
       )
     })
     return () => ctx.revert()
   }, [open])
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') setCatalogue(false)
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [])
 
   const items = [...navLinks, navCta]
 
@@ -84,24 +95,56 @@ export function Navbar({ onDatasheet }) {
           </Link>
 
           <nav className="nav__links" aria-label="Primary">
-            {navLinks.map((item) => (
+            <div
+              className="nav__item"
+              onMouseEnter={() => setCatalogue(true)}
+              onMouseLeave={() => setCatalogue(false)}
+            >
               <NavLink
-                key={item.href}
-                to={item.href}
+                to="/products"
                 className={({ isActive }) => `nav__link ${isActive ? 'is-active' : ''}`}
+                onFocus={() => setCatalogue(true)}
               >
-                {item.label}
+                Products
               </NavLink>
-            ))}
+              <div className={`nav-mega ${catalogue ? 'is-open' : ''}`} ref={megaRef}>
+                <p className="nav-mega__kicker">Products</p>
+                <p className="nav-mega__title">Sentinel Series</p>
+                <ul>
+                  {products.map((item) => (
+                    <li key={item.slug}>
+                      <Link to={`/products/${item.slug}`}>
+                        <span>{item.code.replace('SENTINEL-', '')}</span>
+                        <b>{item.role}</b>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            {navLinks
+              .filter((item) => item.href !== '/products')
+              .map((item) => (
+                <NavLink
+                  key={item.href}
+                  to={item.href}
+                  className={({ isActive }) => `nav__link ${isActive ? 'is-active' : ''}`}
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+            <NavLink
+              to={navCta.href}
+              className={({ isActive }) => `nav__link ${isActive ? 'is-active' : ''}`}
+            >
+              {navCta.label}
+            </NavLink>
           </nav>
 
           <div className="nav__end">
             <button className="nav__cta" type="button" onClick={onDatasheet}>
               {navPrimary.label}
             </button>
-            <Link to={navCta.href} className="nav__contact">
-              {navCta.label}
-            </Link>
             <button
               className="nav__menu"
               type="button"
@@ -125,6 +168,14 @@ export function Navbar({ onDatasheet }) {
                   {item.label}
                 </Link>
               ))}
+              <div className="nav-overlay__series">
+                {products.map((item) => (
+                  <Link key={item.slug} to={`/products/${item.slug}`} onClick={() => setOpen(false)}>
+                    <span>{item.code.replace('SENTINEL-', '')}</span>
+                    {item.role}
+                  </Link>
+                ))}
+              </div>
               <button
                 type="button"
                 onClick={() => {

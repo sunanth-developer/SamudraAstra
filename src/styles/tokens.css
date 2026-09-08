@@ -44,9 +44,9 @@
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   --container-width: 1440px;
-  --page-pad: clamp(20px, 4vw, 64px);
-  --section-padding: clamp(5.5rem, 10vw, 9rem);
-  --nav-height: 80px;
+  --page-pad: 48px;
+  --section-padding: clamp(6rem, 11vw, 10rem);
+  --nav-height: 72px;
   --safe-top: env(safe-area-inset-top, 0px);
   --grid-gap: 24px;
 
@@ -86,9 +86,9 @@
 
 @media (max-width: 1023px) {
   :root {
-    --nav-height: 68px;
-    --section-padding: 4.6rem;
-    --page-pad: 24px;
+    --nav-height: 64px;
+    --section-padding: 4.8rem;
+    --page-pad: 32px;
     --fs-section: clamp(2.1rem, 6vw, 3.2rem);
     --fs-display: clamp(2.1rem, 7vw, 3.4rem);
     --fs-hero: clamp(2.4rem, 8vw, 3.8rem);
@@ -98,8 +98,8 @@
 @media (max-width: 767px) {
   :root {
     --nav-height: 60px;
-    --section-padding: 3.6rem;
-    --page-pad: 16px;
+    --section-padding: 3.8rem;
+    --page-pad: 20px;
     --space-7: 36px;
     --space-8: 40px;
     --space-9: 56px;

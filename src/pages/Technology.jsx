@@ -24,12 +24,12 @@ export function Technology() {
 
       <section className="sads-section sads-section--navy">
         <div className="container">
-          <ol className="sads-timeline">
+          <ol className="sads-teasers">
             {technologyTracks.map((item) => (
               <li key={item.id}>
-                <p className="meta">{item.id}</p>
+                <p className="sads-num">{item.id}</p>
                 <div>
-                  <h2 className="card-heading">{item.title}</h2>
+                  <h2 className="display">{item.title}</h2>
                   <p className="sads-coming">Coming soon</p>
                   <p className="body">
                     Detailed engineering content for this track will be published when it is

@@ -1,0 +1,72 @@
+.switcher {
+  margin-top: 48px;
+}
+
+.switcher__tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.switcher__tabs button {
+  display: grid;
+  gap: 8px;
+  min-height: 88px;
+  padding: 22px 18px 20px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--steel);
+  transition: color 0.35s var(--ease-out);
+}
+
+.switcher__tabs button span {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  text-transform: none;
+  color: inherit;
+}
+
+.switcher__tabs button.is-active,
+.switcher__tabs button:hover {
+  color: var(--pure-white);
+}
+
+.switcher__tabs button.is-active span {
+  color: var(--signal-orange);
+}
+
+.switcher__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: var(--space-7);
+  align-items: center;
+  margin-top: 36px;
+}
+
+.switcher__copy .btn {
+  margin-top: 28px;
+}
+
+@media (max-width: 1023px) {
+  .switcher__stage {
+    grid-template-columns: 1fr;
+  }
+
+  .switcher__tabs button {
+    min-height: 72px;
+    padding: 16px 12px 16px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .switcher__tabs {
+    grid-template-columns: 1fr;
+  }
+}

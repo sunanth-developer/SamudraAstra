@@ -6,15 +6,17 @@ import { Seo } from '../components/Seo'
 import { JsonLd } from '../components/JsonLd'
 import { LoadingScreen } from '../components/LoadingScreen/LoadingScreen'
 import { TechnicalSpec } from '../components/TechnicalSpec/TechnicalSpec'
+import { PlatformDiagram } from '../components/PlatformDiagram/PlatformDiagram'
+import { MissionSwitcher } from '../components/MissionSwitcher/MissionSwitcher'
+import { RedundancyDiagram } from '../components/RedundancyDiagram/RedundancyDiagram'
+import { AutonomyFlow } from '../components/AutonomyFlow/AutonomyFlow'
+import { SentinelChapter } from '../components/SentinelChapter/SentinelChapter'
 import { images } from '../data/imageConfig'
 import {
-  autonomyLayers,
   brand,
+  commonTechnical,
   developmentStatus,
-  missionModules,
-  platformSpecs,
   products,
-  redundancyPaths,
   scalePoints,
   whyPillars,
 } from '../data/content'
@@ -112,8 +114,6 @@ function HomeStory() {
   const { openDatasheet } = useOutletContext() ?? {}
   const { failedRef, subscribe } = useVesselProgress()
   const [failed, setFailed] = useState(true)
-  const [module, setModule] = useState(0)
-  const [path, setPath] = useState(0)
   const rootRef = useRef(null)
 
   useEffect(() => {
@@ -127,19 +127,35 @@ function HomeStory() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.sads-hero__line',
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, stagger: 0.12, delay: 0.15, ease: 'power3.out' }
+        { y: 36, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, stagger: 0.1, delay: 0.18, ease: 'power3.out' }
       )
       gsap.fromTo(
         '.sads-hero__after',
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, delay: 0.55, ease: 'power3.out' }
+        { y: 18, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, delay: 0.6, ease: 'power3.out' }
       )
+      gsap.fromTo(
+        '.sads-hero__meta',
+        { opacity: 0 },
+        { opacity: 1, duration: 0.8, delay: 0.9, ease: 'power2.out' }
+      )
+
+      gsap.to('.sads-hero__media img', {
+        scale: 1.08,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.sads-hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      })
 
       gsap.utils.toArray('[data-reveal]').forEach((node) => {
         gsap.fromTo(
           node,
-          { y: 36, opacity: 0 },
+          { y: 32, opacity: 0 },
           {
             y: 0,
             opacity: 1,
@@ -153,7 +169,7 @@ function HomeStory() {
       gsap.utils.toArray('[data-rise]').forEach((node) => {
         gsap.fromTo(
           node,
-          { y: 24, opacity: 0 },
+          { y: 20, opacity: 0 },
           {
             y: 0,
             opacity: 1,
@@ -172,15 +188,6 @@ function HomeStory() {
     }
   }, [])
 
-  useEffect(() => {
-    if (prefersReducedMotion()) return undefined
-    const tick = window.setInterval(() => {
-      setModule((current) => (current + 1) % missionModules.length)
-      setPath((current) => (current + 1) % 2)
-    }, 2800)
-    return () => window.clearInterval(tick)
-  }, [])
-
   return (
     <div ref={rootRef}>
       <section className="sads-hero" id="landing">
@@ -189,6 +196,10 @@ function HomeStory() {
         </div>
         <div className="sads-hero__grid" aria-hidden="true" />
         <div className="sads-hero__wash" />
+        <div className="sads-hero__meta" aria-hidden="true">
+          <span>Sentinel Series</span>
+          <span>Platform / 01</span>
+        </div>
         <div className="container sads-hero__inner">
           <p className="eyebrow sads-hero__line">Samudra Astra Defence Systems</p>
           <h1 className="hero-heading">
@@ -218,9 +229,9 @@ function HomeStory() {
 
       <SentinelPin />
 
-      <section className="sads-section sads-section--solid sads-section--dark">
-        <div className="container sads-split">
-          <div data-reveal>
+      <section className="sads-section sads-section--solid sads-section--dark" id="platform">
+        <div className="container">
+          <div className="sads-head" data-reveal>
             <p className="eyebrow">Common platform</p>
             <h2 className="section-heading">One hull. Multiple missions.</h2>
             <p className="body">
@@ -228,38 +239,13 @@ function HomeStory() {
               Deep-V aluminium monohull with standardized payload interfaces.
             </p>
           </div>
-          <div className="sads-spec-grid">
-            {platformSpecs.map((item) => (
-              <div data-rise key={item.label}>
-                <TechnicalSpec {...item} />
-              </div>
-            ))}
-          </div>
+          <PlatformDiagram />
         </div>
       </section>
 
-      <section className="sads-section sads-section--solid sads-section--navy">
+      <section className="sads-section sads-section--solid sads-section--navy" id="modularity">
         <div className="container">
-          <div data-reveal>
-            <p className="eyebrow">Why Samudra Astra</p>
-            <h2 className="section-heading">Modular by design. Redundant by principle.</h2>
-          </div>
-          <div className="sads-pillars">
-            {whyPillars.map((item) => (
-              <article data-rise key={item.id}>
-                <p className="sads-num">{item.id}</p>
-                <div className="sads-draw" aria-hidden="true" />
-                <h3 className="card-heading">{item.title}</h3>
-                <p className="body">{item.line}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="sads-section sads-section--solid sads-section--dark">
-        <div className="container">
-          <div data-reveal>
+          <div className="sads-head" data-reveal>
             <p className="eyebrow">Modular by design</p>
             <h2 className="section-heading">One platform. Interchangeable mission systems.</h2>
             <p className="body">
@@ -267,22 +253,11 @@ function HomeStory() {
               reconnaissance asset or interceptor.
             </p>
           </div>
-          <div className="sads-modules">
-            {missionModules.map((item, i) => (
-              <article data-rise key={item.id} className={i === module ? 'sads-module is-active' : 'sads-module'}>
-                <p className="eyebrow">{item.name}</p>
-                <ul className="sads-list">
-                  {item.items.map((entry) => (
-                    <li key={entry}>{entry}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
+          <MissionSwitcher />
         </div>
       </section>
 
-      <section className="sads-section sads-section--solid sads-section--navy">
+      <section className="sads-section sads-section--solid sads-section--dark" id="redundancy">
         <div className="container sads-split">
           <div data-reveal>
             <p className="eyebrow">Redundancy</p>
@@ -293,30 +268,65 @@ function HomeStory() {
             </p>
             <p className="body">Offshore survivability is not an option. It is a design mandate.</p>
           </div>
-          <div className="sads-redundancy" aria-hidden="true">
-            {redundancyPaths.map((pair) => (
-              <div className="sads-path" key={pair[0]}>
-                <span className={path === 0 ? 'is-live' : ''}>{pair[0]}</span>
-                <b />
-                <span className={path === 1 ? 'is-live' : ''}>{pair[1]}</span>
-              </div>
+          <RedundancyDiagram />
+        </div>
+      </section>
+
+      <section className="sads-section sads-section--solid sads-section--mist theme-light" id="why">
+        <div className="container">
+          <div data-reveal>
+            <p className="eyebrow">Why Samudra Astra</p>
+            <h2 className="section-heading">Modular by design. Redundant by principle.</h2>
+          </div>
+          <div className="sads-principles">
+            {whyPillars.map((item) => (
+              <article data-rise key={item.id}>
+                <p className="sads-num">{item.id}</p>
+                <h3 className="display">{item.title}</h3>
+                <p className="body">{item.line}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="sads-section sads-section--solid sads-section--mist theme-light">
+      <SentinelChapter product={products[0]} mood="persist" />
+      <SentinelChapter product={products[1]} mood="precision" />
+      <SentinelChapter product={products[2]} mood="speed" />
+
+      <section className="sads-section sads-section--solid sads-section--navy" id="autonomy">
         <div className="container">
-          <div data-reveal>
-            <p className="eyebrow">Cost and scale</p>
-            <h2 className="section-heading">High capability. Built to scale.</h2>
+          <div className="sads-head" data-reveal>
+            <p className="eyebrow">Autonomy and integration</p>
+            <h2 className="section-heading">Autonomous. Connected. Mission-ready.</h2>
+            <p className="body">
+              Supervised autonomy with loss-of-link procedures, built for seamless integration
+              with naval C2 networks.
+            </p>
           </div>
-          <div className="sads-scale">
-            {scalePoints.map((item, i) => (
-              <article data-rise key={item.title}>
-                <p className="sads-num">0{i + 1}</p>
-                <h3 className="card-heading">{item.title}</h3>
-                <p className="body">{item.body}</p>
+          <AutonomyFlow />
+          <div className="sads-head sads-follow" data-reveal>
+            <p className="eyebrow">Future-ready</p>
+            <h2 className="section-heading">Designed for the mission ahead.</h2>
+            <p className="body">
+              Open architecture enables payload growth and technology upgrades throughout the
+              vessel’s lifecycle. The hull remains constant. The mission changes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="sads-section sads-section--solid sads-section--mist theme-light" id="systems">
+        <div className="container">
+          <div className="sads-head" data-reveal>
+            <p className="eyebrow">Common systems</p>
+            <h2 className="section-heading">Shared architecture.</h2>
+          </div>
+          <div className="sads-systems">
+            {commonTechnical.map((item) => (
+              <article data-rise key={item.label}>
+                <p className="eyebrow">{item.label}</p>
+                <p className="card-heading">{item.value}</p>
               </article>
             ))}
           </div>
@@ -326,67 +336,45 @@ function HomeStory() {
       <section className="sads-section sads-section--solid sads-section--dark">
         <div className="container">
           <div data-reveal>
-            <p className="eyebrow">Autonomy and integration</p>
-            <h2 className="section-heading">Autonomous. Connected. Mission-ready.</h2>
-            <p className="body">
-              Supervised autonomy with loss-of-link procedures, built for seamless integration
-              with naval C2 networks.
-            </p>
+            <p className="eyebrow">Cost and scale</p>
+            <h2 className="section-heading">High capability. Built to scale.</h2>
           </div>
-          <div className="sads-layers">
-            {autonomyLayers.map((item) => (
-              <article className="sads-layer" data-rise key={item.id}>
-                <p className="sads-num">{item.id}</p>
-                <div>
-                  <h3 className="card-heading">{item.title}</h3>
-                  <ul className="sads-list">
-                    {item.items.map((entry) => (
-                      <li key={entry}>{entry}</li>
-                    ))}
-                  </ul>
-                </div>
+          <div className="sads-scale">
+            {scalePoints.map((item, i) => (
+              <article data-rise key={item.title}>
+                <p className="sads-num">0{i + 1}</p>
+                <h3 className="display">{item.title}</h3>
+                <p className="body">{item.body}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="sads-section sads-section--solid sads-section--navy">
-        <div className="container">
-          <div data-reveal>
-            <p className="eyebrow">Future-ready</p>
-            <h2 className="section-heading">Designed for the mission ahead.</h2>
-            <p className="body">
-              Open architecture enables payload growth and technology upgrades throughout the
-              vessel’s lifecycle. The hull remains constant. The mission changes.
-            </p>
-            <p className="sads-name sads-name--small">{missionModules[module].name}</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="sads-section sads-section--solid sads-section--dark" id="status">
+      <section className="sads-section sads-section--solid sads-section--navy" id="status">
         <div className="container">
           <div data-reveal>
             <p className="eyebrow">Development status</p>
             <h2 className="section-heading">Notes from the programme.</h2>
           </div>
-          <ol className="sads-timeline">
-            {developmentStatus.map((item) => (
+          <ol className="sads-roadmap">
+            {developmentStatus.map((item, index) => (
               <li data-rise key={item.id}>
+                <p className="sads-num">{item.id}</p>
                 <p className="meta">{item.when}</p>
-                <div>
-                  <h3 className="card-heading">{item.title}</h3>
-                  <p className="body">{item.body}</p>
-                </div>
+                <h3 className="card-heading">{item.title}</h3>
+                <p className="body">{item.body}</p>
+                {index < developmentStatus.length - 1 ? (
+                  <span className="sads-roadmap__line" aria-hidden="true" />
+                ) : null}
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      <section className="sads-section sads-section--solid sads-section--navy">
-        <div className="container" data-reveal>
+      <section className="sads-section sads-section--solid sads-section--dark">
+        <div className="container sads-end" data-reveal>
           <p className="eyebrow">Contact</p>
           <h2 className="section-heading">Request a datasheet.</h2>
           <p className="body">

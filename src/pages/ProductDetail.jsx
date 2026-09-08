@@ -1,7 +1,7 @@
 import { Link, Navigate, useOutletContext, useParams } from 'react-router-dom'
 import { Seo } from '../components/Seo'
 import { JsonLd } from '../components/JsonLd'
-import { TechnicalSpec } from '../components/TechnicalSpec/TechnicalSpec'
+import { SpecRail } from '../components/SpecRail/SpecRail'
 import { USVViewer } from '../components/USVViewer/USVViewer'
 import { images } from '../data/imageConfig'
 import { getProduct, platformSpecs } from '../data/content'
@@ -34,24 +34,36 @@ export function ProductDetail() {
         }}
       />
 
-      <header className="container sads-page-hero" data-reveal>
-        <p className="sads-crumbs">
-          <Link to="/">Home</Link>
-          <span>/</span>
-          <Link to="/products">Products</Link>
-          <span>/</span>
-          {product.code}
-        </p>
-        <p className="eyebrow">{product.role}</p>
-        <h1 className="sads-name">{product.code}</h1>
-        <p className="meta">{product.epithet}</p>
-        <p className="body">{product.summary}</p>
-        <div className="sads-hero__actions">
-          <button className="btn btn--solid" type="button" onClick={openDatasheet}>
-            Request Datasheet
-          </button>
+      <header className="sads-product-hero">
+        <div className="sads-product-hero__media">
+          <img src={visual} alt={`${product.code} ${product.epithet}`} />
+        </div>
+        <div className="container sads-product-hero__copy" data-reveal>
+          <p className="sads-crumbs">
+            <Link to="/">Home</Link>
+            <span>/</span>
+            <Link to="/products">Products</Link>
+            <span>/</span>
+            {product.code}
+          </p>
+          <p className="eyebrow">{product.role}</p>
+          <h1 className="sads-name">{product.code}</h1>
+          <p className="meta">{product.epithet}</p>
+          <p className="body">{product.summary}</p>
+          <div className="sads-actions">
+            <button className="btn btn--solid" type="button" onClick={openDatasheet}>
+              Request Datasheet
+            </button>
+          </div>
         </div>
       </header>
+
+      <section className="sads-section sads-section--dark">
+        <div className="container">
+          <p className="eyebrow">Performance</p>
+          <SpecRail items={product.performance} />
+        </div>
+      </section>
 
       <section className="sads-section sads-section--navy">
         <div className="container">
@@ -83,9 +95,11 @@ export function ProductDetail() {
       </section>
 
       <section className="sads-section sads-section--navy">
-        <div className="container">
-          <p className="eyebrow">Key systems</p>
-          <h2 className="section-heading">Fitted for the mission.</h2>
+        <div className="container sads-split">
+          <div>
+            <p className="eyebrow">Key systems</p>
+            <h2 className="section-heading">Fitted for the mission.</h2>
+          </div>
           <ul className="sads-list">
             {product.systems.map((item) => (
               <li key={item}>{item}</li>
@@ -94,22 +108,11 @@ export function ProductDetail() {
         </div>
       </section>
 
-      <section className="sads-section sads-section--dark">
-        <div className="container">
-          <p className="eyebrow">Performance</p>
-          <div className="sads-spec-grid">
-            {product.performance.map((item) => (
-              <TechnicalSpec key={item.label} {...item} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="sads-section sads-section--navy">
+      <section className="sads-section sads-section--mist theme-light">
         <div className="container">
           <p className="eyebrow">Use cases</p>
           <h2 className="section-heading">Where the platform works.</h2>
-          <ul className="sads-list">
+          <ul className="sads-usecases">
             {product.useCases.map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -121,12 +124,8 @@ export function ProductDetail() {
         <div className="container">
           <p className="eyebrow">Common platform</p>
           <h2 className="section-heading">Shared Sentinel architecture.</h2>
-          <div className="sads-spec-grid">
-            {platformSpecs.map((item) => (
-              <TechnicalSpec key={item.label} {...item} />
-            ))}
-          </div>
-          <div className="sads-hero__actions" style={{ marginTop: 36 }}>
+          <SpecRail items={platformSpecs.slice(0, 4)} />
+          <div className="sads-actions">
             <button className="btn btn--solid" type="button" onClick={openDatasheet}>
               Request Datasheet
             </button>

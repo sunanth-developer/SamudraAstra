@@ -36,27 +36,23 @@ export function About() {
       </header>
 
       <section className="sads-section sads-section--navy">
-        <div className="container sads-split" data-reveal>
-          <div>
-            <p className="eyebrow">Our mission</p>
-            <h2 className="section-heading">A single mandate.</h2>
-          </div>
-          <div>
-            <p className="body">
-              Samudra Astra Defence Systems was founded with a single, audacious mandate: to
-              engineer complete marine unmanned systems for India’s defence forces, solving
-              operational challenges that have waited too long for indigenous answers.
-            </p>
-            <p className="body">
-              We are not born to compete for what already exists. We are born to anticipate the
-              problem statements of tomorrow’s battlefields — and to build the solutions that
-              bridge capability gaps with certainty, resilience, and Indian ingenuity.
-            </p>
-          </div>
+        <div className="container sads-manifesto" data-reveal>
+          <p className="eyebrow">Our mission</p>
+          <h2 className="display">A single mandate.</h2>
+          <p className="body sads-manifesto__lead">
+            Samudra Astra Defence Systems was founded with a single, audacious mandate: to
+            engineer complete marine unmanned systems for India’s defence forces, solving
+            operational challenges that have waited too long for indigenous answers.
+          </p>
+          <p className="body">
+            We are not born to compete for what already exists. We are born to anticipate the
+            problem statements of tomorrow’s battlefields — and to build the solutions that
+            bridge capability gaps with certainty, resilience, and Indian ingenuity.
+          </p>
         </div>
       </section>
 
-      <section className="sads-section sads-section--dark">
+      <section className="sads-section sads-section--mist theme-light">
         <div className="container">
           <p className="eyebrow">The Samudra Astra philosophy</p>
           <h2 className="section-heading">{brand.tagline}</h2>
@@ -64,23 +60,23 @@ export function About() {
             The blue horizon represents the maritime domain — vast, contested, and unforgiving.
             To command it requires platforms that are:
           </p>
-          <div className="sads-pillars">
+          <div className="sads-principles">
             {whyPillars.map((item) => (
               <article key={item.id}>
                 <p className="sads-num">{item.id}</p>
-                <h3 className="card-heading">{item.title}</h3>
+                <h3 className="display">{item.title}</h3>
                 <p className="body">{item.line}</p>
               </article>
             ))}
           </div>
-          <p className="body" style={{ marginTop: 32 }}>
+          <p className="body" style={{ marginTop: 40 }}>
             No Compromise. means we do not trade endurance for speed, payload for reliability,
             or cost for capability. Every design decision is measured against operational reality.
           </p>
         </div>
       </section>
 
-      <section className="sads-section sads-section--navy">
+      <section className="sads-section sads-section--dark">
         <div className="container">
           <p className="eyebrow">Design philosophy</p>
           <ol className="sads-timeline">
@@ -97,7 +93,7 @@ export function About() {
         </div>
       </section>
 
-      <section className="sads-section sads-section--dark">
+      <section className="sads-section sads-section--navy">
         <div className="container">
           <p className="eyebrow">Our heritage</p>
           <h2 className="section-heading">Eunoia Innovations Private Limited</h2>
@@ -120,9 +116,9 @@ export function About() {
       </section>
 
       <section className="sads-section sads-section--mist theme-light">
-        <div className="container">
+        <div className="container sads-india">
           <p className="eyebrow">India</p>
-          <h2 className="section-heading">The maritime domain demands persistent capability.</h2>
+          <h2 className="section-heading">Why India needs indigenous USVs</h2>
           <p className="body">
             India’s maritime borders span over 7,500 kilometres, with critical sea lanes, island
             territories, and exclusive economic zones requiring persistent surveillance and rapid
@@ -144,15 +140,15 @@ export function About() {
 
       <section className="sads-section sads-section--dark">
         <div className="container">
-          <div className="sads-spec-grid">
+          <div className="sads-systems sads-systems--dark">
             {aboutFacts.map((item) => (
               <div key={item.label}>
                 <p className="eyebrow">{item.label}</p>
-                <p className="body">{item.value}</p>
+                <p className="card-heading">{item.value}</p>
               </div>
             ))}
           </div>
-          <div className="sads-hero__actions" style={{ marginTop: 36 }}>
+          <div className="sads-actions">
             <Link className="btn btn--solid" to="/products">
               Explore the Sentinel Series
             </Link>

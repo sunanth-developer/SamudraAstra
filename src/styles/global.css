@@ -252,9 +252,10 @@ h3 {
   gap: 12px;
   min-height: 48px;
   padding: 0 22px;
-  font-size: var(--fs-nav);
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 0;
@@ -272,9 +273,9 @@ h3 {
 }
 
 .btn:hover {
-  background: var(--highlight);
-  color: var(--secondary);
-  border-color: var(--highlight);
+  transform: translateX(3px);
+  border-color: var(--pure-white);
+  color: var(--pure-white);
 }
 
 .btn:hover svg {
@@ -283,14 +284,40 @@ h3 {
 
 .btn--solid {
   background: var(--highlight);
-  color: var(--secondary);
+  color: var(--rich-black);
   border-color: var(--highlight);
 }
 
 .btn--solid:hover {
-  background: var(--secondary);
-  color: var(--primary);
-  border-color: var(--secondary);
+  background: var(--pure-white);
+  color: var(--rich-black);
+  border-color: var(--pure-white);
+}
+
+.theme-light .body {
+  color: #3d4a59;
+}
+
+.theme-light .btn {
+  border-color: rgba(13, 26, 99, 0.22);
+  color: var(--samudra-blue);
+}
+
+.theme-light .btn:hover {
+  border-color: var(--samudra-blue);
+  color: var(--samudra-blue);
+}
+
+.theme-light .btn--solid {
+  background: var(--highlight);
+  color: var(--rich-black);
+  border-color: var(--highlight);
+}
+
+.theme-light .btn--solid:hover {
+  background: var(--samudra-blue);
+  color: var(--pure-white);
+  border-color: var(--samudra-blue);
 }
 
 .btn--ghost {

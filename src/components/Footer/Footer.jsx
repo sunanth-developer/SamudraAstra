@@ -9,39 +9,25 @@ export function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <Logo variant="white" />
-            <p className="footer__parent">{brand.parent}</p>
+            <p className="footer__tagline">
+              Command the Blue Horizon.
+              <br />
+              No Compromise.
+            </p>
           </div>
-          <p className="footer__descriptor">{brand.tagline}</p>
-        </div>
-
-        <div className="footer__grid">
-          <div className="footer__col">
-            <p className="meta">Navigate</p>
-            <ul>
-              {footerLinks.map((item) => (
-                <li key={item.href}>
-                  <Link to={item.href}>{item.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="footer__col">
-            <p className="meta">Contact</p>
-            <ul>
-              <li>
-                <a href={`mailto:${brand.email}`}>{brand.email}</a>
-              </li>
-            </ul>
-          </div>
-          <div className="footer__col footer__col--wide">
-            <p className="meta">Position</p>
-            <p className="footer__muted">{brand.supporting}</p>
-          </div>
+          <nav className="footer__nav" aria-label="Footer">
+            {footerLinks.map((item) => (
+              <Link key={item.href} to={item.href}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
 
         <div className="footer__base">
+          <a href={`mailto:${brand.email}`}>{brand.email}</a>
+          <p>{brand.parent}</p>
           <p>© {new Date().getFullYear()} Samudra Astra Defence Systems</p>
-          <p>No Compromise.</p>
         </div>
       </div>
     </footer>
